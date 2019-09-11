@@ -27,7 +27,7 @@ public class CloseDialog extends DialogFragment {// 关闭新建文件显示的�
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i("fuck", "on create view");
-        View view = inflater.inflate(R.layout.layout_close, container);
+        View view = inflater.inflate(R.layout.layout_dialog, container);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0x00000000));// 背景透明
 
         // 绑定按钮事件

@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentManager;
 
 import java.io.File;
 
-public class NewWindow extends DialogFragment {// 在关闭时调用文件管理器
+public class OpenManager extends DialogFragment {// 打开文件
     public Button yes;
     public Button cancel;
     public int result;
@@ -30,7 +30,7 @@ public class NewWindow extends DialogFragment {// 在关闭时调用文件管理
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i("fuck", "on create view");
-        View view = inflater.inflate(R.layout.layout_save, container);
+        View view = inflater.inflate(R.layout.layout_manager, container);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0x00000000));// 背景透明
 
         // 绑定按钮事件
