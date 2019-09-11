@@ -21,11 +21,15 @@ public class ManagerLow {
         return -1;
     }
 
-    public int readFile(String path, EditText text) {
+    public int readFile(String path, EditText text) {// 读取文件到输入框
         return -1;
     }
 
-    public int writeFile(String path, EditText text) {
+    public int writeFile(String path, EditText text) {// 将输入框内容写入文件
+        return -1;
+    }
+
+    public int tempSave() {// 临时保存
         return -1;
     }
 }
