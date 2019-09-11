@@ -13,11 +13,14 @@ import android.widget.Button;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
-public class closeWindow extends DialogFragment {
+import java.io.File;
+
+public class SaveWindow extends DialogFragment {// 主动保存时显示的文件管理器
     public Button yes;
     public Button cancel;
-    public Button no;
     public int result;
+    public String path;// 文件路径
+    public File file;// 文件
 
     @Override
     public void show(FragmentManager fragmentManager, String tag) {
@@ -27,7 +30,7 @@ public class closeWindow extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i("fuck", "on create view");
-        View view = inflater.inflate(R.layout.layout_close, container);
+        View view = inflater.inflate(R.layout.layout_save, container);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0x00000000));// 背景透明
 
         // 绑定按钮事件
@@ -44,7 +47,6 @@ public class closeWindow extends DialogFragment {
     private void initButton(View view) {
         yes = view.findViewById(R.id.yes_button);
         cancel = view.findViewById(R.id.cancel_button);
-        no = view.findViewById(R.id.no_button);
 
         yes.setOnClickListener(new View.OnClickListener() {//
             @Override
@@ -58,14 +60,6 @@ public class closeWindow extends DialogFragment {
             @Override
             public void onClick(View view) {
                 result = 0;
-                dismiss();
-            }
-        });
-
-        no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                result = -1;
                 dismiss();
             }
         });

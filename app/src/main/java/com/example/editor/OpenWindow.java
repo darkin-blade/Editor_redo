@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentManager;
 
 import java.io.File;
 
-public class saveWindow extends DialogFragment {// 主导保存时显示的文件管理器
+public class OpenWindow extends DialogFragment {// 打开文件
     public Button yes;
     public Button cancel;
     public int result;
