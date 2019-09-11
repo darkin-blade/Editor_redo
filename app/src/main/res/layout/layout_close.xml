@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/save_drawable"
+        android:background="@drawable/dialog_close"
         android:layout_centerInParent="true"
         android:orientation="vertical"
         android:layout_margin="10dp"
