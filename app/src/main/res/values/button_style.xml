@@ -13,21 +13,21 @@
         <item name="android:layout_width">56dp</item>
         <item name="android:layout_height">56dp</item>
         <item name="android:layout_marginLeft">12dp</item>
-        <item name="android:background">@drawable/oval_blue</item>
+        <item name="android:background">@drawable/button_blue</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">14dp</item>
     </style>
 
     <style name="blue1" parent="blue">
-        <item name="android:background">@drawable/oval_blue1</item>
+        <item name="android:background">@drawable/button_blue1</item>
     </style>
 
     <style name="blue2" parent="blue">
-        <item name="android:background">@drawable/oval_blue2</item>
+        <item name="android:background">@drawable/button_blue2</item>
     </style>
 
     <style name="blue3" parent="blue">
-        <item name="android:background">@drawable/oval_blue3</item>
+        <item name="android:background">@drawable/button_blue3</item>
     </style>
 
     <style name="confirm_button">
