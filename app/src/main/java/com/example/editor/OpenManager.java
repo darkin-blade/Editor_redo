@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentManager;
 
 import java.io.File;
 
-public class OpenManager extends DialogFragment {// 打开文件
+public class OpenManager extends DialogFragment implements FileBroswer {// 打开文件
     public Button yes;
     public Button cancel;
     public int result;

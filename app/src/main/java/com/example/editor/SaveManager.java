@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentManager;
 
 import java.io.File;
 
-public class SaveManager extends DialogFragment {// 主动保存时显示的文件管理器
+public class SaveManager extends DialogFragment implements FileBroswer {// 主动保存时显示的文件管理器
     public Button yes;
     public Button cancel;
     public int result;

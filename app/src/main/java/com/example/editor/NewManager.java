@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentManager;
 
 import java.io.File;
 
-public class NewManager extends DialogFragment {// 在关闭时调用文件管理器
+public class NewManager extends DialogFragment implements FileBroswer {// 在关闭时调用文件管理器
     public Button yes;
     public Button cancel;
     public int result;
