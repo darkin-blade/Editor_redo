@@ -3,4 +3,20 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <!-- 自定义颜色 -->
+    <color name="black">#000000</color>
+    <color name="blue">#00cff0</color>
+    <color name="blue1">#30aff0</color>
+    <color name="blue2">#7f9ff0</color>
+    <color name="blue3">#af88f0</color>
+    <color name="blue_light">#d0f0ff</color>
+    <color name="blue_dark">#007fc0</color>
+    <color name="grey">#fafafa</color>
+    <color name="grey_light">#eeeeee</color>
+    <color name="grey_dark">#666666</color>
+    <color name="orange">#ffc430</color>
+    <color name="red">#fa1030</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="yellow">#ffe060</color>
 </resources>
