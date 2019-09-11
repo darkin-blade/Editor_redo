@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- `显示`按钮 -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="60dp"
+    android:height="60dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    <path
+        android:fillColor="#cccccc"
+        android:pathData=
+            "M80,10 L70,0 10,60
+             70,120 80,110 30,60"/>
+</vector>
