@@ -25,6 +25,7 @@ public class NewManager extends DialogFragment {// 在关闭时调用文件管�
     @Override
     public void show(FragmentManager fragmentManager, String tag) {
         super.show(fragmentManager, tag);
+        MainActivity.window_num = 2;
     }
 
     @Override

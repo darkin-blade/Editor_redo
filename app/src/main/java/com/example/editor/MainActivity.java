@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     NewManager newManager;// 2
     OpenManager openManager;// 3
     SaveManager saveManager;// 4
-    int window_num;// 调用哪个窗口
+    static int window_num;// 调用哪个窗口
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

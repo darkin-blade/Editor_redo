@@ -25,6 +25,7 @@ public class OpenManager extends DialogFragment {// 打开文件
     @Override
     public void show(FragmentManager fragmentManager, String tag) {
         super.show(fragmentManager, tag);
+        MainActivity.window_num = 3;
     }
 
     @Override

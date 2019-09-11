@@ -25,6 +25,7 @@ public class SaveManager extends DialogFragment {// 主动保存时显示的文�
     @Override
     public void show(FragmentManager fragmentManager, String tag) {
         super.show(fragmentManager, tag);
+        MainActivity.window_num = 4;
     }
 
     @Override
