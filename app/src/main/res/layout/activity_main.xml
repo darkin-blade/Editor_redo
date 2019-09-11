@@ -1,18 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    android:background="@color/grey"
+    android:id="@+id/appBackground"
+    android:elevation="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+            android:background="@color/blue_dark"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tab_height"
+            android:gravity="center">
+        </TextView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tab_height">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:background="@color/blue_dark">
+            </View>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:scrollbars="none">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/file_tab"
+                    android:orientation="horizontal">
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="8dp"
+
+            android:inputType="textMultiLine"
+            android:gravity="start|top"
+            android:scrollbars="vertical"
+
+            android:background="@color/grey"
+            android:textCursorDrawable="@drawable/text_cursor"
+            android:textColor="@drawable/text_color"
+
+            android:textSelectHandle="@drawable/text_handle"
+            android:textSelectHandleLeft="@drawable/text_handle_left"
+            android:textSelectHandleRight="@drawable/text_handle_right"
+            android:textColorHighlight="@color/blue_light"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="360dp"
+        android:layout_height="68dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="0dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toRightOf="parent">
+
+        <!-- `显示/隐藏`按钮 -->
+        <Button
+            android:id="@+id/ctrlButton"
+
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="48dp"
+
+            android:background="@drawable/button_hide"/>
+
+        <!-- `关闭`按钮 -->
+        <Button
+            android:id="@+id/closeButton"
+            android:text="close"
+            style="@style/blue3"/>
+
+        <!-- `新建`按钮 -->
+        <Button
+            android:id="@+id/newButton"
+            android:text="new"
+            style="@style/blue2"/>
+
+        <!-- `保存`按钮 -->
+        <Button
+            android:id="@+id/saveButton"
+            android:text="save"
+            style="@style/blue1"/>
+
+        <!-- `打开`按钮 -->
+        <Button
+            android:id="@+id/openButton"
+            android:text="open"
+            style="@style/blue"/>
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
