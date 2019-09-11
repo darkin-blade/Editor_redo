@@ -7,7 +7,7 @@ import android.widget.EditText;
 public class ManagerLow {
     Context context;
 
-    public void ManagerLow(Context context) {
+    public ManagerLow(Context context) {
         this.context = context;
     }
 
