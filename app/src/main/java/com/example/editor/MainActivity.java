@@ -28,8 +28,21 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
     @Override
     public void onDismiss(DialogInterface dialogInterface) {
-        if (window_num == 0) {
-            ;
+        switch (window_num) {
+            case 0:
+                resClose();
+                break;
+            case 1:
+                resEdit();
+                break;
+            case 2:
+                resNew();
+                break;
+            case 3:
+                resOpen();
+                break;
+            case 4:
+                resSave();
         }
     }
 
