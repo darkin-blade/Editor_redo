@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -22,8 +23,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     SaveManager saveManager;// 4
     static int window_num;// 调用哪个窗口
 
-    ManagerLow managerLow;
-    ManagerMid managerMid;
+    ManagerHigh managerHigh;
 
     int button_move = 280;// 底端button平移距离
     final int button_id = 1234321;// 防id冲突
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         window_num = -1;
 
         // 初始化功能函数
-        managerMid = new ManagerMid(MainActivity.this);
+        managerHigh = new ManagerHigh(MainActivity.this);
 
         // 检查权限
         String permission = "android.permission.WRITE_EXTERNAL_STORAGE";
