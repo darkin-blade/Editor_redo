@@ -4,7 +4,7 @@ import android.content.Context;
 
 import java.io.File;
 
-public class ManagerMid {
+public class ManagerMid extends ManagerLow {
     Context context;
 
     public ManagerMid(Context context) {
@@ -25,5 +25,9 @@ public class ManagerMid {
 
     public String newTempFile() {// 在app目录新建临时文件
         return null;
+    }
+
+    public int changeTab() {
+        return -1;
     }
 }

@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         window_num = -1;
 
         // 初始化功能函数
-        managerLow = new ManagerLow(MainActivity.this);
         managerMid = new ManagerMid(MainActivity.this);
 
         // 检查权限
