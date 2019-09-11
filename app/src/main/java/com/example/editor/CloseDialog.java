@@ -13,7 +13,7 @@ import android.widget.Button;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
-public class CloseWindow extends DialogFragment {// 关闭新建文件显示的提示框
+public class CloseDialog extends DialogFragment {// 关闭新建文件显示的提示框
     public Button yes;
     public Button cancel;
     public Button no;
