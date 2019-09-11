@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- `隐藏`按钮 -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="60dp"
+    android:height="60dp"
+    android:viewportWidth="60"
+    android:viewportHeight="60">
+
+    <path
+        android:fillColor="#ffc430"
+        android:pathData="M30,7.5 L60,7.5 60,10 35,10">
+    </path>
+
+    <path
+        android:fillColor="#ffe060"
+        android:pathData="M0,5 L25,5 35,10 60,10 60,55 0,55">
+    </path>
+
+</vector>
