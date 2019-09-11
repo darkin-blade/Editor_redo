@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         setContentView(R.layout.activity_main);
 
         initParam();
+        initButton();
     }
 
     public void initParam() {// 初始化窗口和功能函数
