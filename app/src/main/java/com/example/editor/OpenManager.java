@@ -52,7 +52,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
 
         // TODO 文件管理器
         Activity activity = getActivity();
-        readPath(activity.getExternalFilesDir(".").getAbsolutePath() + "/", view);
+        readPath(activity.getExternalFilesDir("").getAbsolutePath(), view);
         return view;
     }
 
@@ -82,7 +82,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
         // 清空并显示父目录
         LinearLayout layout = manager.findViewById(R.id.item_list);
         layout.removeAllViews();
-        createItem(1, "..", dirPath, manager);// 父目录
+        createItem(2, "..", dirPath, manager);// 父目录
 
         // 遍历文件夹
         File dir = new File(dirPath);
@@ -99,7 +99,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
 
         // 显示路径
         TextView curPath = manager.findViewById(R.id.cur_path);
-        curPath.setText(dir.getAbsolutePath());
+        curPath.setText(dirPath);// TODO 简化路径
     }
 
     private LinearLayout createItem(int itemType, final String itemName, final String itemPath, final View manager) {// 创建图标
@@ -137,7 +137,15 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
         item.addView(type);
         item.addView(name);
 
-        if (itemType == 1) {// `点击`遍历子文件夹
+        if (itemType == 2) {// 父文件夹
+            item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    File dir = new File(itemPath);
+                    readPath(dir.getParent(), manager);
+                }
+            });
+        } else if (itemType == 1) {// `点击`遍历子文件夹
             item.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -145,10 +153,15 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
                 }
             });
         } else {// `点击`获取文件名
-            file = new File(itemPath + "/" + itemName);
-            path = file.getAbsolutePath();
-            result = 1;
-            dismiss();
+            item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    file = new File(itemPath + "/" + itemName);
+                    path = file.getAbsolutePath();
+                    result = 1;
+                    dismiss();
+                }
+            });
         }
 
         layout.addView(item);
