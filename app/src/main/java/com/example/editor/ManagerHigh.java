@@ -1,10 +1,13 @@
 package com.example.editor;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,7 +48,31 @@ public class ManagerHigh extends ManagerMid {
         return -1;
     }
 
-    public int outerOpen() {// 由其他应用打开的文件
-        return -1;
+    public int outerOpen(Intent intent) {// 由其他应用打开的文件
+        String action = intent.getAction();// 判断本软件启动的方式
+        if (action.equals("android.intent.action.VIEW")) {// 由其他软件打开本软件
+            Uri uri = intent.getData();
+
+            // 获取文件地址
+            String path = getPathFromUri(context, uri);// TODO 参数
+            if (checkTemp(path)) {// 是临时文件
+                Toast.makeText(context, "can't load tempFile " + path, Toast.LENGTH_SHORT).show();
+            }
+
+            // 加载文件
+            String tempPath = newTempFile();// 创建副本
+            readFile(path);// 加载真实文件
+            writeFile(tempPath);// 将文本框内容导入临时文件
+
+            // 绑定临时文件
+            SharedPreferences pFile = context.getSharedPreferences("file", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = pFile.edit();
+            editor.putString(tempPath, path);
+            loadTempFile(tempPath);// 包含加载文件名
+
+            return 1;
+        }
+
+        return 0;
     }
 }

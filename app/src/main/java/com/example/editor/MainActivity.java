@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
         initParam();
         initButton();
+
+        // 从外部打开
+        Intent intent = getIntent();
+        managerHigh.outerOpen(intent);// 在内部判断是否是由外部打开
     }
 
     public void initParam() {// 初始化窗口和功能函数
