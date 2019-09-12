@@ -27,7 +27,7 @@ public class ManagerLow {
         return -1;
     }
 
-    public int writeFile(String path, EditText text) {// 将输入框内容写入文件
+    public int writeFile(String path) {// 将输入框内容写入文件
         try {
             // 检查被写文件是否存在
             File file = new File(path);
