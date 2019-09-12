@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity implements DialogInterface.OnDismissListener {
     CloseDialog closeDialog;// 0
@@ -50,7 +51,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         window_num = -1;
 
         // 初始化功能函数
-        managerHigh = new ManagerHigh(MainActivity.this);
+        EditText text= findViewById(R.id.text_input);
+        managerHigh = new ManagerHigh(MainActivity.this, text);
 
         // 初始化窗口号
         cur_num = -1;

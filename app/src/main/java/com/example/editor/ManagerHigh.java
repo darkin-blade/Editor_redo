@@ -2,15 +2,15 @@ package com.example.editor;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.EditText;
 
 import java.io.File;
 import java.io.IOException;
 
 public class ManagerHigh extends ManagerMid {
-    Context context;
 
-    public ManagerHigh(Context context) {
-        this.context = context;
+    public ManagerHigh (Context context, EditText text) {
+        super(context, text);
     }
 
     public int recoverTab() {// 重新打开软件时恢复所有窗口

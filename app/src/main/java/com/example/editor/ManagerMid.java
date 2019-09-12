@@ -1,10 +1,16 @@
 package com.example.editor;
 
 import android.content.Context;
+import android.widget.EditText;
 
 import java.io.File;
 
 public class ManagerMid extends ManagerLow {
+
+    public ManagerMid (Context context, EditText text) {
+        super(context, text);
+
+    }
 
     public int loadTempFile(String tempPath) {// 将临时文件加载到tab
         return -1;

@@ -11,6 +11,14 @@ import java.io.RandomAccessFile;
 
 public class ManagerLow {
 
+    Context context;
+    EditText text;
+
+    public ManagerLow (Context context, EditText text) {
+        this.context = context;
+        this.text = text;
+    }
+
     public int unlinkTempFile(String tempPath) {// 删除临时文件,并解除其文件绑定
         return -1;
     }
