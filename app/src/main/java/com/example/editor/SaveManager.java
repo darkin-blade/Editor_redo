@@ -76,7 +76,7 @@ public class SaveManager extends DialogFragment implements FileBroswer {// ä¸»åŠ
     }
 
     @Override
-    public void readPath(String dirPath) {
+    public void readPath(String dirPath, View view) {
         ;
     }
 }

@@ -76,7 +76,7 @@ public class NewManager extends DialogFragment implements FileBroswer {// 在关
     }
 
     @Override
-    public void readPath(String dirPath) {
+    public void readPath(String dirPath, View view) {
         ;
     }
 }

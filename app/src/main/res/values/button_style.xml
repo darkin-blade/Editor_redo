@@ -65,7 +65,7 @@
     <dimen name="tab_width">110dp</dimen>
 
     <!-- file_manager中每一项的高度 -->
-    <dimen name="file_outer">65dp</dimen>
+    <dimen name="item_height">65dp</dimen>
 
     <!-- save_manager底部提示框高度 -->
     <dimen name="save_height">210dp</dimen>

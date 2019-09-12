@@ -37,12 +37,12 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/file_outer"
+                    android:layout_height="@dimen/item_height"
                     android:background="@color/grey"
                     android:paddingLeft="20dp">
                     <LinearLayout
-                        android:layout_width="@dimen/file_outer"
-                        android:layout_height="@dimen/file_outer"
+                        android:layout_width="@dimen/item_height"
+                        android:layout_height="@dimen/item_height"
                         android:padding="10dp">
                         <View
                             android:layout_height="match_parent"
@@ -61,12 +61,12 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/file_outer"
+                    android:layout_height="@dimen/item_height"
                     android:background="@color/grey"
                     android:paddingLeft="20dp">
                     <LinearLayout
-                        android:layout_width="@dimen/file_outer"
-                        android:layout_height="@dimen/file_outer"
+                        android:layout_width="@dimen/item_height"
+                        android:layout_height="@dimen/item_height"
                         android:padding="10dp">
                         <View
                             android:layout_height="match_parent"

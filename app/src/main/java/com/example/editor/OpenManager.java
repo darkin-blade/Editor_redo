@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
@@ -67,7 +69,34 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
     }
 
     @Override
-    public void readPath(String dirPath) {
-        ;
+    public void readPath(String dirPath, View view) {
+        LinearLayout layout = view.findViewById(R.id.item_list);
+        LinearLayout.LayoutParams itemParam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, R.dimen.item_height);
+        LinearLayout.LayoutParams typeParam = new LinearLayout.LayoutParams(R.dimen.item_height, R.dimen.item_height);
+        LinearLayout.LayoutParams iconParam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        LinearLayout.LayoutParams nameParam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+
+        LinearLayout item = new LinearLayout(getContext());// TODO 参数
+        item.setLayoutParams(itemParam);
+        item.setBackgroundResource(R.color.grey);
+        item.setPadding(20, 0, 0, 0);
+
+        LinearLayout type = new LinearLayout(getContext());// 图标的外圈
+        type.setLayoutParams(typeParam);
+        type.setPadding(10, 10, 10, 10);
+
+        View icon = new View(getContext());// 图标
+        icon.setLayoutParams(iconParam);
+        icon.setBackgroundResource(R.drawable.item_dir);
+
+        TextView name = new TextView(getContext());// 文件名
+        name.setBackgroundResource(R.color.grey);
+        name.setText("storage");
+        name.setPadding(20, 20, 20, 20);
+
+        type.addView(icon);
+        item.addView(type);
+        item.addView(name);
+        layout.addView(item);
     }
 }
