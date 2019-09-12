@@ -76,26 +76,14 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
     }
 
     @Override
-    public void readPath(final String dirPath, View view) {
+    public void readPath(final String dirPath, View manager) {
         LinearLayout item = null;
-        item = createItem(0, "file", view);
-        item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
-        item = createItem(1, "dir", view);
-        item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
+        item = createItem(0, "file", "/storage/", manager);
+        item = createItem(1, "dir", "/storage/", manager);
     }
 
-    private LinearLayout createItem(int itemType, String itemName, View view) {// 创建图标
-        LinearLayout layout = view.findViewById(R.id.item_list);
+    private LinearLayout createItem(int itemType, final String itemName, final String itemPath, final View manager) {// 创建图标
+        LinearLayout layout = manager.findViewById(R.id.item_list);
         LinearLayout.LayoutParams itemParam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, item_height);
         LinearLayout.LayoutParams typeParam = new LinearLayout.LayoutParams(item_height, item_height);
         LinearLayout.LayoutParams iconParam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
@@ -127,6 +115,15 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
         type.addView(icon);
         item.addView(type);
         item.addView(name);
+        if (itemType == 1) {
+            item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    readPath(itemPath + itemName, manager);
+                }
+            });
+        }
+
         layout.addView(item);
 
         return item;
