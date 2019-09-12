@@ -46,6 +46,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setCancelable(false);
         setStyle(STYLE_NO_FRAME, android.R.style.Theme);// 关闭背景(点击外部不能取消)
     }
 
@@ -72,6 +73,8 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
 
     @Override
     public void readPath(String dirPath, View view) {
+        Log.i("fuck", "loading");
+
         LinearLayout layout = view.findViewById(R.id.item_list);
         LinearLayout.LayoutParams itemParam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, R.dimen.item_height);
         LinearLayout.LayoutParams typeParam = new LinearLayout.LayoutParams(R.dimen.item_height, R.dimen.item_height);
