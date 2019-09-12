@@ -80,6 +80,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
     public void readPath(final String dirPath, View manager) {
         LinearLayout layout = manager.findViewById(R.id.item_list);
         layout.removeAllViews();
+        createItem(1, "..", dirPath, manager);// 父目录
 
         File dir = new File(dirPath);
         File[] items = dir.listFiles();
@@ -92,8 +93,6 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
                 }
             }
         }
-        createItem(1, "..", dirPath, manager);
-//        item = createItem(0, "file", "/storage/", manager);
     }
 
     private LinearLayout createItem(int itemType, final String itemName, final String itemPath, final View manager) {// 创建图标
@@ -125,6 +124,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
         name.setBackgroundResource(R.color.grey);
         name.setText(itemName);
         name.setPadding(name_padding, name_padding, name_padding, name_padding);
+        name.setSingleLine();
 
         type.addView(icon);
         item.addView(type);
