@@ -75,10 +75,11 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         });
 
         // `打开`按钮
-        Button openBtn = findViewById(R.id.openButton);
-        openBtn.setOnClickListener(new View.OnClickListener() {// 点击`打开`按钮
+        Button btnOpen = findViewById(R.id.openButton);
+        btnOpen.setOnClickListener(new View.OnClickListener() {// 点击`打开`按钮
             @Override
             public void onClick(View view) {
+                openManager.show(getSupportFragmentManager(), "open");
             }
         });
 
@@ -91,8 +92,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         });
 
         // `关闭`按钮
-        Button closeBtn = findViewById(R.id.closeButton);
-        closeBtn.setOnClickListener(new View.OnClickListener() {
+        Button btnClose = findViewById(R.id.closeButton);
+        btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             }

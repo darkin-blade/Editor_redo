@@ -32,12 +32,14 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.i("fuck", "on create view");
         View view = inflater.inflate(R.layout.manager_open, container);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0x00000000));// 背景透明
 
         // 绑定按钮事件
         initButton(view);
+
+        // TODO 文件管理器
+        readPath("", view);
         return view;
     }
 
@@ -90,6 +92,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
         icon.setBackgroundResource(R.drawable.item_dir);
 
         TextView name = new TextView(getContext());// 文件名
+        name.setLayoutParams(nameParam);
         name.setBackgroundResource(R.color.grey);
         name.setText("storage");
         name.setPadding(20, 20, 20, 20);
