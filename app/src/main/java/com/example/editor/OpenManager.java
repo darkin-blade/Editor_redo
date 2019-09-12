@@ -24,6 +24,10 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
     public String path;// 文件路径
     public File file;// 文件
 
+    int item_height = 130;
+    int type_padding = 20;
+    int name_padding = 40;
+
     @Override
     public void show(FragmentManager fragmentManager, String tag) {
         super.show(fragmentManager, tag);
@@ -76,19 +80,19 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
         Log.i("fuck", "loading");
 
         LinearLayout layout = view.findViewById(R.id.item_list);
-        LinearLayout.LayoutParams itemParam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, R.dimen.item_height);
-        LinearLayout.LayoutParams typeParam = new LinearLayout.LayoutParams(R.dimen.item_height, R.dimen.item_height);
+        LinearLayout.LayoutParams itemParam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, item_height);
+        LinearLayout.LayoutParams typeParam = new LinearLayout.LayoutParams(item_height, item_height);
         LinearLayout.LayoutParams iconParam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         LinearLayout.LayoutParams nameParam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
 
         LinearLayout item = new LinearLayout(getContext());// TODO 参数
         item.setLayoutParams(itemParam);
         item.setBackgroundResource(R.color.grey);
-        item.setPadding(20, 0, 0, 0);
+        item.setPadding(name_padding, 0, 0, 0);
 
         LinearLayout type = new LinearLayout(getContext());// 图标的外圈
         type.setLayoutParams(typeParam);
-        type.setPadding(10, 10, 10, 10);
+        type.setPadding(type_padding, type_padding, type_padding, type_padding);
 
         View icon = new View(getContext());// 图标
         icon.setLayoutParams(iconParam);
@@ -98,7 +102,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
         name.setLayoutParams(nameParam);
         name.setBackgroundResource(R.color.grey);
         name.setText("storage");
-        name.setPadding(20, 20, 20, 20);
+        name.setPadding(name_padding, name_padding, name_padding, name_padding);
 
         type.addView(icon);
         item.addView(type);
