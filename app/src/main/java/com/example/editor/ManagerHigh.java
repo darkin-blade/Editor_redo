@@ -68,6 +68,7 @@ public class ManagerHigh extends ManagerMid {
             SharedPreferences pFile = context.getSharedPreferences("file", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = pFile.edit();
             editor.putString(tempPath, path);
+            editor.commit();
             loadTempFile(tempPath);// 包含加载文件名
 
             return 1;
