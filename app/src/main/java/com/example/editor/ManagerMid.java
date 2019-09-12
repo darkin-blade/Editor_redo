@@ -2,6 +2,8 @@ package com.example.editor;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -11,8 +13,8 @@ import java.io.IOException;
 
 public class ManagerMid extends ManagerLow {
 
-    public ManagerMid (Context context, EditText text, String appPath, LinearLayout tabs) {
-        super(context, text, appPath, tabs);
+    public ManagerMid (Context context, EditText text, String appPath, View view) {
+        super(context, text, appPath, view);
     }
 
     public int loadTempFile(String tempPath) {// 将临时文件加载到tab
@@ -30,20 +32,25 @@ public class ManagerMid extends ManagerLow {
             MainActivity.cur_num = MainActivity.total_num;
             MainActivity.total_num ++;
 
-            // 添加tab
+            // 新建tab
             Button btn = new Button(context);
             btn.setBackgroundResource(R.drawable.tab_notactive);// 置为不活跃
             btn.setLayoutParams(new LinearLayout.LayoutParams(220, LinearLayout.LayoutParams.MATCH_PARENT));// 调整tab大小
             btn.setPadding(0, 0, 0, 0);
             btn.setId(MainActivity.button_id + MainActivity.total_num);// 添加tab标号
+
+            // 添加tab
+            LinearLayout tabs = view.findViewById(R.id.file_tab);
             tabs.addView(btn);// 添加到标签栏
 
             // 加载文件
-            readFile(tempPath);
+            readFile(tempPath);// TODO 光标位置
 
             // 切换至新标签
             changeTab(MainActivity.cur_num);
             loadName();// tab显示文件名
+
+            return 0;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -80,7 +87,7 @@ public class ManagerMid extends ManagerLow {
         return null;
     }
 
-    public int changeTab(int next_num) {
+    public int changeTab(int next_num) {// 切换标签页
         return -1;
     }
 

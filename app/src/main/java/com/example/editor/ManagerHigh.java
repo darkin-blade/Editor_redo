@@ -2,6 +2,7 @@ package com.example.editor;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
@@ -10,8 +11,8 @@ import java.io.IOException;
 
 public class ManagerHigh extends ManagerMid {
 
-    public ManagerHigh (Context context, EditText text, String appPath, LinearLayout tabs) {
-        super(context, text, appPath, tabs);
+    public ManagerHigh (Context context, EditText text, String appPath, View view) {
+        super(context, text, appPath, view);
 
     }
 

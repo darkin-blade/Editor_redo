@@ -3,6 +3,7 @@ package com.example.editor;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
@@ -18,13 +19,13 @@ public class ManagerLow {
     Context context;
     EditText text;
     String appPath;
-    LinearLayout tabs;
+    View view;
 
-    public ManagerLow (Context context, EditText text, String appPath, LinearLayout tabs) {// 构造方法
+    public ManagerLow (Context context, EditText text, String appPath, View view) {// 构造方法
         this.context = context;
         this.text = text;
         this.appPath = appPath;// 软件目录
-        this.tabs = tabs;// 标签栏
+        this.view = view;// 标签栏
     }
 
     public int unlinkTempFile(String tempPath) {// 删除临时文件,并解除其文件绑定
