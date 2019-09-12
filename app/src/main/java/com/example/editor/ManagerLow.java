@@ -8,6 +8,9 @@ import android.widget.EditText;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.charset.Charset;
 
 public class ManagerLow {
 
@@ -25,7 +28,35 @@ public class ManagerLow {
         return -1;
     }
 
-    public int readFile(String path, EditText text) {// 读取文件到输入框
+    public int readFile(String path) {// 读取文件到输入框
+        // TODO path == null
+        try {
+            // 检查文件
+            File file = new File(path);
+            if (file.exists() == false) {// 如果不存在就创建
+                file.createNewFile();
+            }
+            int file_len = (int) file.length();
+            shit(file_len + 16 > 0);// 检查溢出
+            byte[] file_content = new byte[file_len];// 存储文件内容
+
+            // 读取文件内容
+            RandomAccessFile raFile = new RandomAccessFile(file, "r");
+            raFile.read(file_content);
+
+            // 将byte转成char
+            Charset charset = Charset.forName("UTF-8");
+            ByteBuffer byteBuffer = ByteBuffer.allocate(file_len);
+            byteBuffer.put(file_content);
+            byteBuffer.flip();
+            CharBuffer charBuffer = charset.decode(byteBuffer);
+            text.setText(charBuffer.array(), 0, charBuffer.length());
+
+            return 0;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return -1;
     }
 

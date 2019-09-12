@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         btnOpen.setOnClickListener(new View.OnClickListener() {// 点击`打开`按钮
             @Override
             public void onClick(View view) {
+                managerHigh.saveTemp();
                 openManager.show(getSupportFragmentManager(), "open");
             }
         });
@@ -142,6 +143,12 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     }
 
     public void resOpen() {
+        if (openManager.result == 0) {// `取消`打开文件
+            return;
+        } else {
+            String tempPath = managerHigh.newTempFile();// 新建临时文件
+            managerHigh.readFile()
+        }
     }
 
     public void resSave() {
