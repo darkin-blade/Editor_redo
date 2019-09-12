@@ -13,10 +13,12 @@ public class ManagerLow {
 
     Context context;
     EditText text;
+    String appPath;
 
-    public ManagerLow (Context context, EditText text) {// 构造方法
+    public ManagerLow (Context context, EditText text, String appPath) {// 构造方法
         this.context = context;
         this.text = text;
+        this.appPath = appPath;// 软件目录
     }
 
     public int unlinkTempFile(String tempPath) {// 删除临时文件,并解除其文件绑定

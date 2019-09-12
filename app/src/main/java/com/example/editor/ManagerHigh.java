@@ -9,8 +9,8 @@ import java.io.IOException;
 
 public class ManagerHigh extends ManagerMid {
 
-    public ManagerHigh (Context context, EditText text) {
-        super(context, text);
+    public ManagerHigh (Context context, EditText text, String appPath) {
+        super(context, text, appPath);
     }
 
     public int recoverTab() {// 重新打开软件时恢复所有窗口

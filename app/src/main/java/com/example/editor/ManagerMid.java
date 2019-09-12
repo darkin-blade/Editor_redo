@@ -7,8 +7,8 @@ import java.io.File;
 
 public class ManagerMid extends ManagerLow {
 
-    public ManagerMid (Context context, EditText text) {
-        super(context, text);
+    public ManagerMid (Context context, EditText text, String appPath) {
+        super(context, text, appPath);
     }
 
     public int loadTempFile(String tempPath) {// 将临时文件加载到tab
