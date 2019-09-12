@@ -43,6 +43,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.i("fuck", "CreateView");
         View view = inflater.inflate(R.layout.manager_open, container);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0x00000000));// 背景透明
 
@@ -57,6 +58,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
 
     @Override
     public void onDismiss(final DialogInterface dialog) {
+        Log.i("fuck", "Dismiss");
         super.onDismiss(dialog);
         Activity activity = getActivity();
         if (activity instanceof DialogInterface.OnDismissListener) {
@@ -77,10 +79,12 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
     }
     
     public void readPath(final String dirPath, View manager) {
+        // 清空并显示父目录
         LinearLayout layout = manager.findViewById(R.id.item_list);
         layout.removeAllViews();
         createItem(1, "..", dirPath, manager);// 父目录
 
+        // 遍历文件夹
         File dir = new File(dirPath);
         File[] items = dir.listFiles();
         if (items != null) {
@@ -92,6 +96,10 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
                 }
             }
         }
+
+        // 显示路径
+        TextView curPath = manager.findViewById(R.id.cur_path);
+        curPath.setText(dir.getAbsolutePath());
     }
 
     private LinearLayout createItem(int itemType, final String itemName, final String itemPath, final View manager) {// 创建图标
@@ -128,13 +136,19 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
         type.addView(icon);
         item.addView(type);
         item.addView(name);
-        if (itemType == 1) {
+
+        if (itemType == 1) {// `点击`遍历子文件夹
             item.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     readPath(itemPath + "/" + itemName, manager);
                 }
             });
+        } else {// `点击`获取文件名
+            file = new File(itemPath + "/" + itemName);
+            path = file.getAbsolutePath();
+            result = 1;
+            dismiss();
         }
 
         layout.addView(item);

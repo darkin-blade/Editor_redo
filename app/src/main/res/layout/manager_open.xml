@@ -52,6 +52,7 @@
             </View>
 
             <TextView
+                android:id="@+id/cur_path"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/tab_height"
                 android:background="@color/grey">
