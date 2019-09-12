@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.EditText;
 
+import java.io.File;
+import java.io.IOException;
+
 public class ManagerLow {
 
     public int unlinkTempFile(String tempPath) {// 删除临时文件,并解除其文件绑定
@@ -16,10 +19,15 @@ public class ManagerLow {
     }
 
     public int writeFile(String path, EditText text) {// 将输入框内容写入文件
-        return -1;
-    }
-
-    public int saveTemp() {// 临时保存
+        File file = new File(path);
+        if (file.exists() == false) {
+            try {
+                file.createNewFile();// TODO 父目录不存在
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        String content = text.getText().toString();
         return -1;
     }
 

@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     int button_move = 280;// 底端button平移距离
     final int button_id = 1234321;// 防id冲突
 
+    static int cur_num;// 当前窗口号
+    static int total_num;// 总窗口号
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,10 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
         // 初始化功能函数
         managerHigh = new ManagerHigh(MainActivity.this);
+
+        // 初始化窗口号
+        cur_num = -1;
+        total_num = 0;
 
         // 检查权限
         String permission = "android.permission.WRITE_EXTERNAL_STORAGE";
@@ -71,6 +78,9 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         btnNew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                managerHigh.saveTemp();
+                String tempPath = managerHigh.newTempFile();
+                managerHigh.loadTempFile(tempPath);
             }
         });
 
