@@ -11,8 +11,8 @@ import java.io.IOException;
 
 public class ManagerHigh extends ManagerMid {
 
-    public ManagerHigh (Context context, EditText text, String appPath, View view) {
-        super(context, text, appPath, view);
+    public ManagerHigh (Context context, String appPath, View view) {
+        super(context, appPath, view);
 
     }
 
