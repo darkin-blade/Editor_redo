@@ -43,7 +43,8 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
         initButton(view);
 
         // TODO 文件管理器
-        readPath("", view);
+        Activity activity = getActivity();
+        readPath(activity.getExternalFilesDir(".").getAbsolutePath() + "/", view);
         return view;
     }
 
@@ -78,8 +79,18 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
     @Override
     public void readPath(final String dirPath, View manager) {
         LinearLayout item = null;
-        item = createItem(0, "file", "/storage/", manager);
-        item = createItem(1, "dir", "/storage/", manager);
+        item.removeAllViews();
+
+        File dir = new File(dirPath);
+        File[] items = dir.listFiles();
+        for (int i = 0; i < items.length ; i++) {
+            if (items[i].isDirectory()) {
+                createItem(1, items[i].getName(), dirPath, manager);
+            } else {
+                createItem(1, items[i].getName(), dirPath, manager);
+            }
+        }
+//        item = createItem(0, "file", "/storage/", manager);
     }
 
     private LinearLayout createItem(int itemType, final String itemName, final String itemPath, final View manager) {// 创建图标
