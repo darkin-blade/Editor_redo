@@ -36,6 +36,14 @@ public class ManagerMid extends ManagerLow {
             btn.setLayoutParams(new LinearLayout.LayoutParams(220, LinearLayout.LayoutParams.MATCH_PARENT));// 调整tab大小
             btn.setPadding(0, 0, 0, 0);
             btn.setId(MainActivity.button_id + MainActivity.total_num);// 添加tab标号
+            tabs.addView(btn);// 添加到标签栏
+
+            // 加载文件
+            readFile(tempPath);
+
+            // 切换至新标签
+            changeTab(MainActivity.cur_num);
+            loadName();// tab显示文件名
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -72,7 +80,11 @@ public class ManagerMid extends ManagerLow {
         return null;
     }
 
-    public int changeTab() {
+    public int changeTab(int next_num) {
+        return -1;
+    }
+
+    public int loadName() {// 显示当前窗口的文件名
         return -1;
     }
 }
