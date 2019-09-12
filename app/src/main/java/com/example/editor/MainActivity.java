@@ -147,7 +147,16 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
             return;
         } else {
             String tempPath = managerHigh.newTempFile();// 新建临时文件
-            managerHigh.readFile()
+            managerHigh.readFile(openManager.path);// 读取到输入框
+            managerHigh.writeFile(tempPath);// 将输入框中内容写入临时文件
+
+            // 绑定文件
+            SharedPreferences pFile = getSharedPreferences("file", MODE_PRIVATE);
+            SharedPreferences.Editor editor = pFile.edit();
+            editor.putString(tempPath, openManager.path);
+            editor.commit();
+
+            managerHigh.loadTempFile(tempPath);// 加载临时文件
         }
     }
 
