@@ -78,18 +78,21 @@ public class OpenManager extends DialogFragment implements FileBroswer {// æ‰“å¼
 
     @Override
     public void readPath(final String dirPath, View manager) {
-        LinearLayout item = null;
-        item.removeAllViews();
+        LinearLayout layout = manager.findViewById(R.id.item_list);
+        layout.removeAllViews();
 
         File dir = new File(dirPath);
         File[] items = dir.listFiles();
-        for (int i = 0; i < items.length ; i++) {
-            if (items[i].isDirectory()) {
-                createItem(1, items[i].getName(), dirPath, manager);
-            } else {
-                createItem(1, items[i].getName(), dirPath, manager);
+        if (items != null) {
+            for (int i = 0; i < items.length ; i++) {
+                if (items[i].isDirectory()) {
+                    createItem(1, items[i].getName(), dirPath, manager);
+                } else {
+                    createItem(0, items[i].getName(), dirPath, manager);
+                }
             }
         }
+        createItem(1, "..", dirPath, manager);
 //        item = createItem(0, "file", "/storage/", manager);
     }
 
@@ -130,7 +133,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// æ‰“å¼
             item.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    readPath(itemPath + itemName, manager);
+                    readPath(itemPath + "/" + itemName, manager);
                 }
             });
         }
