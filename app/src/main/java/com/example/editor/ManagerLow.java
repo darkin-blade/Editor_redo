@@ -17,13 +17,11 @@ import java.nio.charset.Charset;
 public class ManagerLow {
 
     Context context;
-    EditText text;
     String appPath;
     View view;
 
-    public ManagerLow (Context context, EditText text, String appPath, View view) {// 构造方法
+    public ManagerLow (Context context, String appPath, View view) {// 构造方法
         this.context = context;
-        this.text = text;
         this.appPath = appPath;// 软件目录
         this.view = view;// 标签栏
     }
@@ -54,6 +52,9 @@ public class ManagerLow {
             byteBuffer.put(file_content);
             byteBuffer.flip();
             CharBuffer charBuffer = charset.decode(byteBuffer);
+
+            // 加载内容
+            EditText text = view.findViewById(R.id.text_input);
             text.setText(charBuffer.array(), 0, charBuffer.length());
 
             return 0;
@@ -73,6 +74,7 @@ public class ManagerLow {
             }
 
             // 计算长度
+            EditText text = view.findViewById(R.id.text_input);
             String content = text.getText().toString();
             int origin_len = (int) file.length();// 被写文件的大小
             int new_len = content.getBytes().length;// 写入的字符串大小
