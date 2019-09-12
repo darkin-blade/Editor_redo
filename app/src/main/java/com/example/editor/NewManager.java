@@ -74,4 +74,9 @@ public class NewManager extends DialogFragment implements FileBroswer {// 在关
             ((DialogInterface.OnDismissListener) activity).onDismiss(dialog);
         }
     }
+
+    @Override
+    public void readPath(String dirPath) {
+        ;
+    }
 }

@@ -74,4 +74,9 @@ public class SaveManager extends DialogFragment implements FileBroswer {// ä¸»åŠ
             ((DialogInterface.OnDismissListener) activity).onDismiss(dialog);
         }
     }
+
+    @Override
+    public void readPath(String dirPath) {
+        ;
+    }
 }

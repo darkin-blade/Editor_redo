@@ -65,4 +65,9 @@ public class OpenManager extends DialogFragment implements FileBroswer {// æ‰“å¼
             ((DialogInterface.OnDismissListener) activity).onDismiss(dialog);
         }
     }
+
+    @Override
+    public void readPath(String dirPath) {
+        ;
+    }
 }
