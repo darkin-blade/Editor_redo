@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements DialogInterface.OnDismissListener {
     CloseDialog closeDialog;// 0
@@ -150,6 +151,13 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         if (openManager.result == 0) {// `取消`打开文件
             return;
         } else {
+            // 检查是否是临时文件
+            if (managerHigh.checkTemp(openManager.path)) {
+                Toast.makeText(this, "can't load tempFile " + openManager.path, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // 加载临时文件
             String tempPath = managerHigh.newTempFile();// 新建临时文件
             managerHigh.readFile(openManager.path);// 读取到输入框
             managerHigh.writeFile(tempPath);// 将输入框中内容写入临时文件

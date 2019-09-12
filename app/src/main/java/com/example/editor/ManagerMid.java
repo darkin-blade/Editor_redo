@@ -73,7 +73,7 @@ public class ManagerMid extends ManagerLow {
             File tempFile = null;
             for (int i = 0; i < 1000; i++) {
                 shit(i < 100);
-                tempPath = appPath + "temp" + i;// 临时文件名
+                tempPath = appPath + "/temp" + i;// 临时文件名
                 tempFile = new File(tempPath);
                 if (tempFile.exists() == false) {// 找到合适的文件名
                     break;
@@ -124,6 +124,24 @@ public class ManagerMid extends ManagerLow {
     }
 
     public int loadName() {// 显示当前窗口的文件名
-        return -1;
+        // 获取路径
+        SharedPreferences pTab = context.getSharedPreferences("tab", Context.MODE_PRIVATE);
+        String tempPath = pTab.getString(MainActivity.cur_num + "", null);// TODO 必须非空
+
+        // 获取绑定的对应文件
+        SharedPreferences pFile = context.getSharedPreferences("file", Context.MODE_PRIVATE);
+        String path = pFile.getString(tempPath, null);
+
+        // 加载文件名
+        Button curTab = view.findViewById(MainActivity.cur_num + MainActivity.button_id);
+        if (path == null) {// 临时文件
+            File tempFile = new File(tempPath);
+            curTab.setText(tempFile.getName());
+        } else {// 有绑定文件
+            File file = new File(path);// TODO 文件不存在
+            curTab.setText(file.getName());
+        }
+
+        return 0;
     }
 }

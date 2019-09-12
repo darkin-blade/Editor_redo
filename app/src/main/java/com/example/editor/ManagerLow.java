@@ -13,6 +13,7 @@ import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
+import java.util.regex.Pattern;
 
 public class ManagerLow {
 
@@ -116,5 +117,24 @@ public class ManagerLow {
         if (b == false) {
             panic("fuck");
         }
+    }
+
+    public boolean checkTemp(String path) {// 检查是否是临时文件
+        if (path == null) {
+            return false;
+        }
+
+        // 先检查是否是app目录
+        File file = new File(path);
+        String dirPath = file.getParent();// TODO 不包含"/."
+        if (!Pattern.matches(dirPath + "(/.)*(/)*", appPath)) {// 如果不是app目录
+            return false;
+        }
+
+        // 再检查是否是临时文件名
+        if (!Pattern.matches("^temp\\d{1,2}$", file.getName())) {// 不是临时文件名
+            return false;
+        }
+        return true;
     }
 }
