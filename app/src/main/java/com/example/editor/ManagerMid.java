@@ -18,6 +18,7 @@ public class ManagerMid extends ManagerLow {
     }
 
     public int loadTempFile(String tempPath) {// 将临时文件加载到tab
+        fuck("loadTempFile");
         try {
             // 检查文件存在
             File tempFile = new File(tempPath);
@@ -29,8 +30,7 @@ public class ManagerMid extends ManagerLow {
             SharedPreferences pTab = context.getSharedPreferences("tab", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = pTab.edit();
             editor.putString(MainActivity.total_num + "", tempPath);// 绑定临时文件到窗口
-            MainActivity.cur_num = MainActivity.total_num;
-            MainActivity.total_num ++;
+            editor.commit();
 
             // 新建tab
             Button btn = new Button(context);
@@ -38,6 +38,8 @@ public class ManagerMid extends ManagerLow {
             btn.setLayoutParams(new LinearLayout.LayoutParams(220, LinearLayout.LayoutParams.MATCH_PARENT));// 调整tab大小
             btn.setPadding(0, 0, 0, 0);
             btn.setId(MainActivity.button_id + MainActivity.total_num);// 添加tab标号
+            MainActivity.cur_num = MainActivity.total_num;
+            MainActivity.total_num ++;
 
             // 添加tab
             LinearLayout tabs = view.findViewById(R.id.file_tab);

@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
         // 初始化功能函数
         View view = getWindow().getDecorView().findViewById(android.R.id.content);// TODO
-        Log.i("fuck", (view == null) + "");
         managerHigh = new ManagerHigh(MainActivity.this, getExternalFilesDir("").getAbsolutePath(), view);
 
         // 初始化窗口号
@@ -147,6 +146,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     }
 
     public void resOpen() {
+        managerHigh.fuck("resOpen");
         if (openManager.result == 0) {// `取消`打开文件
             return;
         } else {
