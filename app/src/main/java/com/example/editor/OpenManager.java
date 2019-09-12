@@ -76,9 +76,25 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
     }
 
     @Override
-    public void readPath(String dirPath, View view) {
-        Log.i("fuck", "loading");
+    public void readPath(final String dirPath, View view) {
+        LinearLayout item = null;
+        item = createItem(0, "file", view);
+        item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
+        item = createItem(1, "dir", view);
+        item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
+    }
 
+    private LinearLayout createItem(int itemType, String itemName, View view) {// 创建图标
         LinearLayout layout = view.findViewById(R.id.item_list);
         LinearLayout.LayoutParams itemParam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, item_height);
         LinearLayout.LayoutParams typeParam = new LinearLayout.LayoutParams(item_height, item_height);
@@ -96,17 +112,23 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
 
         View icon = new View(getContext());// 图标
         icon.setLayoutParams(iconParam);
-        icon.setBackgroundResource(R.drawable.item_dir);
+        if (itemType == 0) {// 文件
+            icon.setBackgroundResource(R.drawable.item_file);
+        } else {// 文件夹
+            icon.setBackgroundResource(R.drawable.item_dir);
+        }
 
         TextView name = new TextView(getContext());// 文件名
         name.setLayoutParams(nameParam);
         name.setBackgroundResource(R.color.grey);
-        name.setText("storage");
+        name.setText(itemName);
         name.setPadding(name_padding, name_padding, name_padding, name_padding);
 
         type.addView(icon);
         item.addView(type);
         item.addView(name);
         layout.addView(item);
+
+        return item;
     }
 }
