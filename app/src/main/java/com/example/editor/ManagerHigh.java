@@ -44,4 +44,8 @@ public class ManagerHigh extends ManagerMid {
     public int checkFile() {// 在软件运行中恢复被删除的文件
         return -1;
     }
+
+    public int outerOpen() {// 由其他应用打开的文件
+        return -1;
+    }
 }
