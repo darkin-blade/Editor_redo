@@ -7,6 +7,7 @@ import android.widget.EditText;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 
 public class ManagerLow {
 
@@ -19,15 +20,32 @@ public class ManagerLow {
     }
 
     public int writeFile(String path, EditText text) {// 将输入框内容写入文件
-        File file = new File(path);
-        if (file.exists() == false) {
-            try {
+        try {
+            // 检查被写文件是否存在
+            File file = new File(path);
+            if (file.exists() == false) {
                 file.createNewFile();// TODO 父目录不存在
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+
+            // 计算长度
+            String content = text.getText().toString();
+            int origin_len = (int) file.length();// 被写文件的大小
+            int new_len = content.getBytes().length;// 写入的字符串大小
+            if (origin_len > new_len) {// 删除原文件
+                file.delete();
+                file.createNewFile();
+            }
+
+            // 写入文件
+            RandomAccessFile raFile = new RandomAccessFile(file, "rw");
+            raFile.write(content.getBytes());
+            raFile.close();
+            
+            return 0;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        String content = text.getText().toString();
+
         return -1;
     }
 
