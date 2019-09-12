@@ -67,7 +67,10 @@
     <!-- file_manager中每一项的高度 -->
     <dimen name="file_outer">65dp</dimen>
 
-    <!-- file_manager底部提示框高度 -->
+    <!-- save_manager底部提示框高度 -->
     <dimen name="save_height">210dp</dimen>
+
+    <!-- open_manager底部提示框高度 -->
+    <dimen name="open_height">110dp</dimen>
 
 </resources>

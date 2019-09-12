@@ -31,7 +31,7 @@ public class NewManager extends DialogFragment implements FileBroswer {// 在关
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i("fuck", "on create view");
-        View view = inflater.inflate(R.layout.layout_manager, container);
+        View view = inflater.inflate(R.layout.manager_save, container);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0x00000000));// 背景透明
 
         // 绑定按钮事件

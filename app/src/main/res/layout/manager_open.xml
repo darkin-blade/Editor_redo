@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:background="@color/grey"
+        android:text="Open file"
+        android:textSize="20dp"
+        android:gravity="center">
+    </TextView>
+
+    <View
+        style="@style/file_manager">
+    </View>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/open_height"
+            app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/file_outer"
+                    android:background="@color/grey"
+                    android:paddingLeft="20dp">
+                    <LinearLayout
+                        android:layout_width="@dimen/file_outer"
+                        android:layout_height="@dimen/file_outer"
+                        android:padding="10dp">
+                        <View
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:background="@drawable/item_dir">
+                        </View>
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/grey"
+                        android:text="storage/"
+                        android:padding="20dp">
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/file_outer"
+                    android:background="@color/grey"
+                    android:paddingLeft="20dp">
+                    <LinearLayout
+                        android:layout_width="@dimen/file_outer"
+                        android:layout_height="@dimen/file_outer"
+                        android:padding="10dp">
+                        <View
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:background="@drawable/item_file">
+                        </View>
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/grey"
+                        android:text="storage/"
+                        android:padding="20dp">
+                    </TextView>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/open_height"
+            android:background="@color/grey"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <View
+                style="@style/file_manager">
+            </View>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:background="@color/grey">
+            </TextView>
+
+            <View
+                style="@style/file_manager">
+            </View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:padding="6dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/cancel_button"
+                    style="@style/cancel_button"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
