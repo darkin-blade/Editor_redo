@@ -12,7 +12,9 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -52,7 +54,9 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         window_num = -1;
 
         // 初始化功能函数
-        managerHigh = new ManagerHigh(MainActivity.this, getExternalFilesDir("").getAbsolutePath(), );
+        View view = getWindow().getDecorView().findViewById(android.R.id.content);// TODO
+        Log.i("fuck", (view == null) + "");
+        managerHigh = new ManagerHigh(MainActivity.this, getExternalFilesDir("").getAbsolutePath(), view);
 
         // 初始化窗口号
         cur_num = -1;
