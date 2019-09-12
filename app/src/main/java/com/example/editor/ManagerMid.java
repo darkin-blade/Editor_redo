@@ -24,6 +24,9 @@ public class ManagerMid extends ManagerLow {
     }
 
     public String newTempFile() {// 在app目录新建临时文件
+        for (int i = 0; i < 1000; i ++) {
+
+        }
         return null;
     }
 

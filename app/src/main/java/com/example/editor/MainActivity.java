@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
         // 初始化功能函数
         EditText text= findViewById(R.id.text_input);
-        managerHigh = new ManagerHigh(MainActivity.this, text);
+        managerHigh = new ManagerHigh(MainActivity.this, text, getExternalFilesDir(".").getAbsolutePath() + "/");
 
         // 初始化窗口号
         cur_num = -1;

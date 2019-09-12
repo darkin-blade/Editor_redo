@@ -70,4 +70,14 @@ public class ManagerLow {
     public void fuck(String log) {
         Log.i("fuck", log);
     }
+
+    public void panic(String log) {
+        new AssertionError(log);
+    }
+
+    public void shit(boolean b) {
+        if (b == false) {
+            panic("fuck");
+        }
+    }
 }
