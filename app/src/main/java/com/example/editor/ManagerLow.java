@@ -15,7 +15,7 @@ import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.util.regex.Pattern;
 
-public class ManagerLow {
+public class ManagerLow extends GetPath {
 
     Context context;
     String appPath;
