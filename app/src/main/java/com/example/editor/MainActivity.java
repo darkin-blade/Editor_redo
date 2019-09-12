@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity implements DialogInterface.OnDismissListener {
     CloseDialog closeDialog;// 0
@@ -26,8 +27,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
     ManagerHigh managerHigh;
 
-    int button_move = 280;// 底端button平移距离
-    final int button_id = 1234321;// 防id冲突
+    static int button_move = 280;// 底端button平移距离
+    static final int button_id = 1234321;// 防id冲突
 
     static int cur_num;// 当前窗口号
     static int total_num;// 总窗口号
@@ -51,8 +52,9 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         window_num = -1;
 
         // 初始化功能函数
-        EditText text= findViewById(R.id.text_input);
-        managerHigh = new ManagerHigh(MainActivity.this, text, getExternalFilesDir("").getAbsolutePath() + "/");
+        EditText text= findViewById(R.id.text_input);// 输入框
+        LinearLayout tabs = findViewById(R.id.file_tab);// 标签栏
+        managerHigh = new ManagerHigh(MainActivity.this, text, getExternalFilesDir("").getAbsolutePath(), tabs);
 
         // 初始化窗口号
         cur_num = -1;
