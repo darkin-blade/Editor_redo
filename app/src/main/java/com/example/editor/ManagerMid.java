@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.EditText;
 
 import java.io.File;
+import java.io.IOException;
 
 public class ManagerMid extends ManagerLow {
 
@@ -24,9 +25,24 @@ public class ManagerMid extends ManagerLow {
     }
 
     public String newTempFile() {// 在app目录新建临时文件
-        for (int i = 0; i < 1000; i ++) {
+        try {
+            String tempPath = null;
+            File tempFile = null;
+            for (int i = 0; i < 1000; i++) {
+                shit(i < 100);
+                tempPath = appPath + "temp" + i;// 临时文件名
+                tempFile = new File(tempPath);
+                if (tempFile.exists() == false) {// 找到合适的文件名
+                    break;
+                }
+            }
+            tempFile.createNewFile();//
 
+            return tempPath;// 返回临时文件的绝对路径
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
         return null;
     }
 
