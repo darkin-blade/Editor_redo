@@ -35,6 +35,13 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setCancelable(false);
+        setStyle(STYLE_NO_FRAME, android.R.style.Theme);// 关闭背景(点击外部不能取消)
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.manager_open, container);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0x00000000));// 背景透明
@@ -49,10 +56,12 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setCancelable(false);
-        setStyle(STYLE_NO_FRAME, android.R.style.Theme);// 关闭背景(点击外部不能取消)
+    public void onDismiss(final DialogInterface dialog) {
+        super.onDismiss(dialog);
+        Activity activity = getActivity();
+        if (activity instanceof DialogInterface.OnDismissListener) {
+            ((DialogInterface.OnDismissListener) activity).onDismiss(dialog);
+        }
     }
 
     private void initButton(View view) {
@@ -66,17 +75,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
             }
         });
     }
-
-    @Override
-    public void onDismiss(final DialogInterface dialog) {
-        super.onDismiss(dialog);
-        Activity activity = getActivity();
-        if (activity instanceof DialogInterface.OnDismissListener) {
-            ((DialogInterface.OnDismissListener) activity).onDismiss(dialog);
-        }
-    }
-
-    @Override
+    
     public void readPath(final String dirPath, View manager) {
         LinearLayout layout = manager.findViewById(R.id.item_list);
         layout.removeAllViews();

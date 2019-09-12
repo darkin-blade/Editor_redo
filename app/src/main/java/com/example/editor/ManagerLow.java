@@ -14,7 +14,7 @@ public class ManagerLow {
     Context context;
     EditText text;
 
-    public ManagerLow (Context context, EditText text) {
+    public ManagerLow (Context context, EditText text) {// 构造方法
         this.context = context;
         this.text = text;
     }
