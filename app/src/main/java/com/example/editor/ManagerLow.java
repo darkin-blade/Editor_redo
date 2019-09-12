@@ -19,7 +19,15 @@ public class ManagerLow {
         return -1;
     }
 
-    public int tempSave() {// 临时保存
+    public int saveTemp() {// 临时保存
+        return -1;
+    }
+
+    public int saveNum() {// 保存数字
+        return -1;
+    }
+
+    public int saveCursor() {// 保存光标位置
         return -1;
     }
 

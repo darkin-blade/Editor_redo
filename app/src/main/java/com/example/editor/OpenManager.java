@@ -46,16 +46,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// æ‰“å¼
     }
 
     private void initButton(View view) {
-        yes = view.findViewById(R.id.yes_button);
         cancel = view.findViewById(R.id.cancel_button);
-
-        yes.setOnClickListener(new View.OnClickListener() {//
-            @Override
-            public void onClick(View view) {
-                result = 1;
-                dismiss();
-            }
-        });
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override

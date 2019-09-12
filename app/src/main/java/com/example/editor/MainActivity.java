@@ -133,4 +133,16 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
     public void resSave() {
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        managerHigh.fuck("pause");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        managerHigh.fuck("destroy");
+    }
 }
