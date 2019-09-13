@@ -179,6 +179,16 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     }
 
     public void resClose() {
+        if (closeDialog.result == 1) {// 选择`保存`
+            newManager.show(getSupportFragmentManager(), "new");// 打开文件管理器
+        } else if (closeDialog.result == 0) {// 关闭提示框
+            return;
+        } else if (closeDialog.result == -1) {// 直接删除新建的文件
+            SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
+            String tempPath = pTab.getString(cur_num + "", null);// TODO 必须非空
+            managerHigh.unlinkTempFile(tempPath);
+            managerHigh.closeTab();
+        }
     }
 
     public void resEdit() {
@@ -191,10 +201,10 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
             // 保存文件
             managerHigh.writeFile(newManager.path);// 写入新建的文件
             SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
-            String tempPath = pTab.getString(cur_num + "", null);// TODO 必须存在
+            String tempPath = pTab.getString(cur_num + "", null);// TODO 必须非空
             // TODO 不需要解除绑定
-            managerHigh.closeTab();
             managerHigh.unlinkTempFile(tempPath);// 删除临时文件
+            managerHigh.closeTab();
         }
     }
 
