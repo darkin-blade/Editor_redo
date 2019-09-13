@@ -79,7 +79,6 @@ public class ManagerLow extends GetPath {
     }
 
     public int writeFile(String path) {// 将输入框内容写入文件
-        fuck("write file: " + path);
         try {
             // 检查被写文件是否存在
             File file = new File(path);
@@ -128,7 +127,6 @@ public class ManagerLow extends GetPath {
         // 获取位置
         EditText text = view.findViewById(R.id.text_input);
         int position = text.getSelectionStart();// TODO end?
-        fuck("get " + position);
 
         // 保存位置
         SharedPreferences pCursor = context.getSharedPreferences("cursor", Context.MODE_PRIVATE);
@@ -151,7 +149,6 @@ public class ManagerLow extends GetPath {
             position = 0;
         }
 
-        fuck("put " + position);
         text.setSelection(position);
 
         return -1;

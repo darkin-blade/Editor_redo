@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i("fuck", "oncreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

@@ -118,8 +118,6 @@ public class ManagerMid extends ManagerLow {
     }
 
     public int changeTab(int next_num) {// 切换标签页
-        fuck(MainActivity.cur_num + "=>" + next_num);
-
         // 将上一窗口置为不活跃
         Button tabLast = view.findViewById(MainActivity.button_id + MainActivity.cur_num);
         if (tabLast != null) {
