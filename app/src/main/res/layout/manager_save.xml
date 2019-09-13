@@ -31,58 +31,10 @@
             android:layout_marginBottom="@dimen/save_height"
             app:layout_constraintTop_toTopOf="parent">
             <LinearLayout
+                android:id="@+id/item_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_height"
-                    android:background="@color/grey"
-                    android:paddingLeft="20dp">
-                    <LinearLayout
-                        android:layout_width="@dimen/item_height"
-                        android:layout_height="@dimen/item_height"
-                        android:padding="10dp">
-                        <View
-                            android:layout_height="match_parent"
-                            android:layout_width="match_parent"
-                            android:background="@drawable/item_dir">
-                        </View>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/grey"
-                        android:text="storage/"
-                        android:padding="20dp">
-                    </TextView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_height"
-                    android:background="@color/grey"
-                    android:paddingLeft="20dp">
-                    <LinearLayout
-                        android:layout_width="@dimen/item_height"
-                        android:layout_height="@dimen/item_height"
-                        android:padding="10dp">
-                        <View
-                            android:layout_height="match_parent"
-                            android:layout_width="match_parent"
-                            android:background="@drawable/item_file">
-                        </View>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/grey"
-                        android:text="storage/"
-                        android:padding="20dp">
-                    </TextView>
-                </LinearLayout>
-
             </LinearLayout>
         </ScrollView>
 

@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
                 SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
                 String tempPath = pTab.getString(cur_num + "", null);
                 if (tempPath == null) {// 没有打开文件
+                    Toast.makeText(MainActivity.this, "you don't open any file", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
