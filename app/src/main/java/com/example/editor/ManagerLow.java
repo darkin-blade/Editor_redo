@@ -169,7 +169,6 @@ public class ManagerLow extends GetPath {
         File file_1 = new File(path_1);
         File file_2 = new File(path_2);
         if ((!file_1.exists()) || (!file_2.exists())) {// 有某一个不存在则返回`文件不相同`
-            fuck("not exists");
             return true;
         }
 
@@ -177,7 +176,6 @@ public class ManagerLow extends GetPath {
         int len_1 = (int) file_1.length();
         int len_2 = (int) file_2.length();
         if (len_1 != len_2) {
-            fuck("length: " + len_1 + " != " + len_2);
             return true;
         }
 
@@ -192,12 +190,11 @@ public class ManagerLow extends GetPath {
                 ra_1.read(content_1, 0, 1);
                 ra_2.read(content_2, 0, 1);
                 if (content_1[0] != content_2[0]) {
-                    fuck("content: " + content_1[0] + " != " + content_2[0]);
-                    return false;
+                    return true;
                 }
             }
 
-            return true;
+            return false;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
