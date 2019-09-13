@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     }
 
     public void initParam() {// 初始化窗口和功能函数
+        clearData();// TODO 测试用
+
         // 初始化窗口
         closeDialog = new CloseDialog();
         editDialog = new EditDialog();
@@ -217,5 +219,21 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     public void onDestroy() {
         super.onDestroy();
         managerHigh.fuck("destroy");
+    }
+
+    private void clearData() {
+        SharedPreferences.Editor editor = null;
+
+        // 清空窗口和临时文件的绑定
+        SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
+        editor = pTab.edit();
+        editor.clear();
+        editor.commit();
+
+        // 清空临时文件和`文件`的绑定
+        SharedPreferences pFile = getSharedPreferences("file", MODE_PRIVATE);
+        editor = pFile.edit();
+        editor.clear();
+        editor.commit();
     }
 }
