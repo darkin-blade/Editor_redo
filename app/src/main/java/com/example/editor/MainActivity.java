@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.File;
@@ -44,6 +45,10 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
         // 恢复窗口
         managerHigh.recoverTab();
+        if (MainActivity.total_num == 0) {// 如果没有打开任何文件,那么不可编辑
+            EditText text = findViewById(R.id.text_input);
+            text.setFocusable(false);// 不可输入
+        }
 
         // 从外部打开
         Intent intent = getIntent();

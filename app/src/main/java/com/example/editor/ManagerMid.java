@@ -66,6 +66,12 @@ public class ManagerMid extends ManagerLow {
             MainActivity.total_num ++;
             loadName();// tab显示文件名
 
+            // TODO 如果是加载的第一个文件,那么将输入框置为可编辑
+            if (MainActivity.total_num == 1) {
+                EditText text = view.findViewById(R.id.text_input);
+                text.setFocusable(true);
+            }
+
             return 0;
         } catch (IOException e) {
             e.printStackTrace();
@@ -119,6 +125,12 @@ public class ManagerMid extends ManagerLow {
         eCursor.commit();
         MainActivity.total_num --;
         changeTab(MainActivity.cur_num);// 切换至临近窗口
+
+        // 当关闭最后一个窗口后将输入框设置为不可编辑
+        if (MainActivity.total_num == 0) {
+            EditText text = view.findViewById(R.id.text_input);
+            text.setFocusable(false);// 不可输入
+        }
 
         return -1;
     }
