@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.editor.getpath.Editor;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -93,8 +95,10 @@ public class ManagerHigh extends ManagerMid {
         fuck("outer open");
         Uri uri = intent.getData();
 
-        // 获取文件地址
-        String path = getPathFromUri(context, uri);// TODO 参数
+        // TODO 获取文件地址
+//        String path = getPathFromUri(context, uri);// TODO 参数
+        Editor readPath = new Editor(context);
+        String path = readPath.readFile(uri);
         if (checkReopen(path)) {// 这个文件已经被打开过
             Toast.makeText(context, path + " already loaded", Toast.LENGTH_SHORT).show();
             return -1;

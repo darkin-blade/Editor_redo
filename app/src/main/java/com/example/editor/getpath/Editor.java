@@ -19,9 +19,9 @@ public class Editor {
     public final static String CONTENT = "content";
 
     // readFile
-    private void readFile(Uri uri) {
+    public String readFile(Uri uri) {
         if (uri == null)
-            return;
+            return null;
 
         content = null;
 
@@ -32,15 +32,16 @@ public class Editor {
 
         if (CONTENT.equalsIgnoreCase(uri.getScheme())) {
             // Read into default file if unresolved
-            content = uri;
-            Uri defaultUri = Uri.fromFile(file);
-            path = defaultUri.getPath();
+            path = null;
+            Log.i("fuck", "unresolved");
         } else {
             // Read file
             path = uri.getPath();
         }
 
         Log.i("fuck" + path, "<" + uri.toString() + ">");
+
+        return path;
     }
 
     // resolveContent
