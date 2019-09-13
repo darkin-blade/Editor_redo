@@ -4,13 +4,11 @@ import android.annotation.TargetApi;
 import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -34,17 +32,6 @@ public class FileUtils {
     @TargetApi(19)
     public static String getPath(final Context context, final Uri uri)
     {
-
-//        if (BuildConfig.DEBUG)
-//            Log.d(TAG + " File",
-//                    "Authority: " + uri.getAuthority() +
-//                            ", Fragment: " + uri.getFragment() +
-//                            ", Port: " + uri.getPort() +
-//                            ", Query: " + uri.getQuery() +
-//                            ", Scheme: " + uri.getScheme() +
-//                            ", Host: " + uri.getHost() +
-//                            ", Segments: " + uri.getPathSegments().toString()
-//            );
 
         final boolean isKitKat =
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
@@ -232,8 +219,6 @@ public class FileUtils {
         {
             if (cursor != null && cursor.moveToFirst())
             {
-//                if (BuildConfig.DEBUG)
-//                    DatabaseUtils.dumpCursor(cursor);
 
                 final int column_index = cursor.getColumnIndex(column);
                 if (column_index >= 0)
@@ -254,8 +239,6 @@ public class FileUtils {
      */
     public static String fileProviderPath(Uri uri)
     {
-//        if (BuildConfig.DEBUG)
-//            Log.d(TAG, "Path " + uri.getPath());
 
         StringBuilder path = new StringBuilder();
         List<String> list = uri.getPathSegments();
@@ -271,9 +254,6 @@ public class FileUtils {
                 path.append(File.separator);
                 path.append(segment);
             }
-
-//            if (BuildConfig.DEBUG)
-//                Log.d(TAG, "Path " + path.toString());
 
             File file = new File(path.toString());
             if (file.isFile())
@@ -292,9 +272,6 @@ public class FileUtils {
                 path.append(segment);
             }
 
-//            if (BuildConfig.DEBUG)
-//                Log.d(TAG, "Path " + path.toString());
-
             File file = new File(path.toString());
             if (file.isFile())
                 return path.toString();
@@ -302,5 +279,4 @@ public class FileUtils {
 
         return null;
     }
-
 }
