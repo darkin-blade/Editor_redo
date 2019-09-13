@@ -295,14 +295,14 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         managerHigh.saveNum();// 保存窗口号
         managerHigh.saveTemp();
         managerHigh.saveCursor();// 保存光标
-
-        // onDestroy();// TODO
     }
 
     @Override
     public void onStop() {
         super.onStop();
         managerHigh.fuck("stop");
+        // 不让窗口重叠
+         onDestroy();// TODO
     }
 
     @Override
