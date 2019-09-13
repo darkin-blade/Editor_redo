@@ -68,6 +68,7 @@ public class ManagerMid extends ManagerLow {
 
             // TODO 如果是加载的第一个文件,那么将输入框置为可编辑
             if (MainActivity.total_num == 1) {
+                fuck("editable");
                 EditText text = view.findViewById(R.id.text_input);
                 text.setFocusable(true);
             }
