@@ -28,8 +28,20 @@ public class ManagerLow extends GetPath {
         this.view = view;// 标签栏
     }
 
-    public int unlinkTempFile(String tempPath) {// 删除临时文件,并解除其文件绑定
-        return -1;
+    public int unlinkTempFile(String tempPath) {// 从磁盘中删除文件并解绑
+        // 解除绑定
+        SharedPreferences pFile = context.getSharedPreferences("file", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pFile.edit();
+        editor.putString(tempPath, null);// 不管原来是什么,直接覆盖
+
+        // 删除文件
+        File tempFile = new File(tempPath);
+        if (tempFile.exists() == false) {
+            return 1;
+        } else {
+            tempFile.delete();
+            return 0;
+        }
     }
 
     public int readFile(String path) {// 读取文件到输入框
@@ -205,5 +217,27 @@ public class ManagerLow extends GetPath {
         }
 
         return false;
+    }
+
+    public String newTempFile() {// 在app目录新建临时文件
+        try {
+            String tempPath = null;
+            File tempFile = null;
+            for (int i = 0; i < 1000; i++) {
+                shit(i < 100);
+                tempPath = appPath + "/temp" + i;// 临时文件名
+                tempFile = new File(tempPath);
+                if (tempFile.exists() == false) {// 找到合适的文件名
+                    break;
+                }
+            }
+            tempFile.createNewFile();//
+
+            return tempPath;// 返回临时文件的绝对路径
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

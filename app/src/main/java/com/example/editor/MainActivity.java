@@ -188,11 +188,13 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         if (newManager.result == 0) {// `取消`保存文件,并`取消`关闭文件
             return;
         } else if (newManager.result == 1) {// 保存文件,并将临时文件删除,关闭文件
+            // 保存文件
             managerHigh.writeFile(newManager.path);// 写入新建的文件
             SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
             String tempPath = pTab.getString(cur_num + "", null);// TODO 必须存在
             // TODO 不需要解除绑定
             managerHigh.closeTab();
+            managerHigh.unlinkTempFile(tempPath);// 删除临时文件
         }
     }
 

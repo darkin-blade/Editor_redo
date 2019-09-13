@@ -66,22 +66,6 @@ public class ManagerMid extends ManagerLow {
         return -1;
     }
 
-    public int unlinkTempFile(String tempPath) {// 从磁盘中删除文件并解绑
-        // 解除绑定
-        SharedPreferences pFile = context.getSharedPreferences("file", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = pFile.edit();
-        editor.putString(tempPath, null);// 解除绑定
-
-        // 删除文件
-        File tempFile = new File(tempPath);
-        if (tempFile.exists() == false) {
-            return 1;
-        } else {
-            tempFile.delete();
-            return 0;
-        }
-    }
-
     public int closeTab() {// 关闭当前窗口,调整tab与临时文件的绑定
         if (MainActivity.cur_num == -1) {// TODO 提示
             return 1;
@@ -115,28 +99,6 @@ public class ManagerMid extends ManagerLow {
         changeTab(MainActivity.cur_num);// 切换至临近窗口
 
         return -1;
-    }
-
-    public String newTempFile() {// 在app目录新建临时文件
-        try {
-            String tempPath = null;
-            File tempFile = null;
-            for (int i = 0; i < 1000; i++) {
-                shit(i < 100);
-                tempPath = appPath + "/temp" + i;// 临时文件名
-                tempFile = new File(tempPath);
-                if (tempFile.exists() == false) {// 找到合适的文件名
-                    break;
-                }
-            }
-            tempFile.createNewFile();//
-
-            return tempPath;// 返回临时文件的绝对路径
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
     }
 
     public int changeTab(int next_num) {// 切换标签页
