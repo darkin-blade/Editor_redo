@@ -43,36 +43,28 @@ public class ManagerHigh extends ManagerMid {
         return -1;
     }
 
-    public int outerOpen(Intent intent) {// 由其他应用打开的文件
+    public int outerOpen(Intent intent) {// TODO 由其他应用打开的文件
         fuck("outer open");
-        saveTemp();
-        saveCursor();
+        Uri uri = intent.getData();
 
-        String action = intent.getAction();// 判断本软件启动的方式
-        if (action.equals("android.intent.action.VIEW")) {// 由其他软件打开本软件
-            Uri uri = intent.getData();
-
-            // 获取文件地址
-            String path = getPathFromUri(context, uri);// TODO 参数
-            if (checkReopen(path)) {// 这个文件已经被打开过
-                Toast.makeText(context, path + " already loaded", Toast.LENGTH_SHORT).show();
-                return -1;
-            }
-
-            // 加载文件
-            String tempPath = newTempFile();// 创建副本
-            readFile(path);// 加载真实文件
-            writeFile(tempPath);// 将文本框内容导入临时文件
-
-            // 绑定临时文件
-            SharedPreferences pFile = context.getSharedPreferences("file", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = pFile.edit();
-            editor.putString(tempPath, path);
-            editor.commit();
-            loadTempFile(tempPath);// 包含加载文件名
-
-            return 1;
+        // 获取文件地址
+        String path = getPathFromUri(context, uri);// TODO 参数
+        if (checkReopen(path)) {// 这个文件已经被打开过
+            Toast.makeText(context, path + " already loaded", Toast.LENGTH_SHORT).show();
+            return -1;
         }
+
+        // 加载文件
+        String tempPath = newTempFile();// 创建副本
+        readFile(path);// 加载真实文件
+        writeFile(tempPath);// 将文本框内容导入临时文件
+
+        // 绑定临时文件
+        SharedPreferences pFile = context.getSharedPreferences("file", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pFile.edit();
+        editor.putString(tempPath, path);
+        editor.commit();
+        loadTempFile(tempPath);// 包含加载文件名
 
         return 0;
     }

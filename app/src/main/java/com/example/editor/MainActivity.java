@@ -41,18 +41,20 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         initFunc();
         initButton();
 
-        clearData();// TODO 测试用
-
         // 恢复窗口数目
         SharedPreferences pNum = getSharedPreferences("num", MODE_PRIVATE);
         cur_num = pNum.getInt("cur_num", -1);
         total_num = pNum.getInt("total_num", 0);
-        
+
         managerHigh.fuck(cur_num + " : " + total_num);// TODO
 
         // 从外部打开
         Intent intent = getIntent();
-        managerHigh.outerOpen(intent);// 在内部判断是否是由外部打开
+        String action = intent.getAction();// 判断本软件启动的方式
+        if (action.equals("android.intent.action.VIEW")) {// 由其他软件打开本软件
+            managerHigh.outerOpen(intent);// 在内部判断是否是由外部打开
+        }
+
     }
 
     public void initFunc() {// 初始化函数,窗口等
@@ -305,6 +307,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     public void onDestroy() {
         super.onDestroy();
         managerHigh.fuck("destroy");
+
+        clearData();// TODO 测试用
     }
 
     private void clearData() {
