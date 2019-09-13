@@ -90,13 +90,13 @@ public class ManagerMid extends ManagerLow {
                 tempPath = pTab.getString(i + "", null);// TODO 必须非空
                 eTab.putString((i - 1) + "", tempPath);
 
-                // 修改tab的id
-                btn = view.findViewById(i + MainActivity.button_id);
-                btn.setId(i - 1 + MainActivity.button_id);
-
                 // 修改tab的光标位置
                 position = pCursor.getInt(i + "", 0);
                 eCursor.putInt((i - 1) + "", position);
+
+                // 修改tab的id
+                btn = view.findViewById(i + MainActivity.button_id);
+                btn.setId(i - 1 + MainActivity.button_id);
             }
 
             // 最后一个tab清空

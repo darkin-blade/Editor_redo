@@ -279,6 +279,10 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     public void onPause() {
         super.onPause();
         managerHigh.fuck("pause");
+
+        managerHigh.saveNum();// 保存窗口号
+        managerHigh.saveTemp();
+        managerHigh.saveCursor();// 保存光标
     }
 
     @Override
@@ -288,6 +292,12 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
         // 恢复被删除的临时文件
         managerHigh.checkFile();
+        SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
+        String tempPath = pTab.getString(cur_num + "", null);
+        if (tempPath != null) {// 打开了文件
+            managerHigh.readFile(tempPath);// 更新文件
+            managerHigh.loadCursor();// 调整光标
+        }
     }
 
     @Override
