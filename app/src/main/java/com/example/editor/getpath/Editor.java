@@ -65,7 +65,6 @@ public class Editor extends Activity {
         if (CONTENT.equalsIgnoreCase(uri.getScheme()))
         {
             content = uri;
-            file = getDefaultFile();
             Uri defaultUri = Uri.fromFile(file);
             path = defaultUri.getPath();
 
@@ -77,7 +76,6 @@ public class Editor extends Activity {
         else
         {
             path = uri.getPath();
-            file = new File(path);
 
             String title = uri.getLastPathSegment();
             setTitle(title);
@@ -107,13 +105,5 @@ public class Editor extends Activity {
         }
 
         return uri;
-    }
-
-    // getDefaultFile
-    private File getDefaultFile()
-    {
-        File documents = new
-                File(Environment.getExternalStorageDirectory(), DOCUMENTS);
-        return new File(documents, EDIT_FILE);
     }
 }
