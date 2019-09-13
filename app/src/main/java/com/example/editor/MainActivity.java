@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         if (action.equals("android.intent.action.VIEW")) {// 由其他软件打开本软件
             managerHigh.outerOpen(intent);// 在内部判断是否是由外部打开
         }
-
     }
 
     public void initFunc() {// 初始化函数,窗口等
@@ -286,6 +285,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         managerHigh.saveNum();// 保存窗口号
         managerHigh.saveTemp();
         managerHigh.saveCursor();// 保存光标
+
+        onDestroy();// TODO
     }
 
     @Override
