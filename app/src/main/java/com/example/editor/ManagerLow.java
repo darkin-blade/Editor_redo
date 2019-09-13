@@ -121,6 +121,7 @@ public class ManagerLow extends GetPath {
 
     public boolean checkReopen(String path) {// 检查是否重复打开文件
         if (path == null) {
+            fuck("null");
             return false;
         }
 
@@ -130,7 +131,8 @@ public class ManagerLow extends GetPath {
         SharedPreferences pFile = context.getSharedPreferences("file", Context.MODE_PRIVATE);
         for (int i = 0; i < MainActivity.total_num ; i ++) {
             tempPath = pTab.getString(i + "", null);// TODO 必须非空
-            if (pFile.getString(tempPath, null) == path) {// 有重复
+            fuck(pFile.getString(tempPath, null) + "<=>" + path);
+            if (pFile.getString(tempPath, null).equals(path)) {// 有重复
                 return true;
             }
         }

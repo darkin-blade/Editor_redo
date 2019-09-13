@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         } else {
             // 检查文件是否重复打开
             if (managerHigh.checkReopen(openManager.path)) {
-                Toast.makeText(this, "can't load tempFile " + openManager.path, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, openManager.path + " already loaded", Toast.LENGTH_SHORT).show();
                 return;
             }
 
