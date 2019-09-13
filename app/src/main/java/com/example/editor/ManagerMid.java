@@ -17,7 +17,7 @@ public class ManagerMid extends ManagerLow {
         super(context, appPath, view);
     }
 
-    public int loadTempFile(String tempPath) {// 将临时文件加载到tab
+    public int loadTempFile(String tempPath) {// 将临时文件加载到tab,会切换标签
         fuck("loadTempFile");
         try {
             // 检查文件存在
@@ -117,7 +117,7 @@ public class ManagerMid extends ManagerLow {
         return -1;
     }
 
-    public int changeTab(int next_num) {// 切换标签页
+    public int changeTab(int next_num) {// 切换标签页,会加载光标
         // 将上一窗口置为不活跃
         Button tabLast = view.findViewById(MainActivity.button_id + MainActivity.cur_num);
         if (tabLast != null) {

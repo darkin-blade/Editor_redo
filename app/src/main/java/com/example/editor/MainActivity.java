@@ -41,12 +41,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         initFunc();
         initButton();
 
-        // 恢复窗口数目
-        SharedPreferences pNum = getSharedPreferences("num", MODE_PRIVATE);
-        cur_num = pNum.getInt("cur_num", -1);
-        total_num = pNum.getInt("total_num", 0);
-
-        managerHigh.fuck(cur_num + " : " + total_num);// TODO
+        // 恢复窗口
+        managerHigh.recoverTab();
 
         // 从外部打开
         Intent intent = getIntent();
@@ -289,15 +285,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     public void onResume() {
         super.onResume();
         managerHigh.fuck("resume");
-
-        // 恢复被删除的临时文件
-        managerHigh.checkFile();
-        SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
-        String tempPath = pTab.getString(cur_num + "", null);
-        if (tempPath != null) {// 打开了文件
-            managerHigh.readFile(tempPath);// 更新文件
-            managerHigh.loadCursor();// 调整光标
-        }
     }
 
     @Override

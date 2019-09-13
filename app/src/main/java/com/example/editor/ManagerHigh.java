@@ -19,7 +19,49 @@ public class ManagerHigh extends ManagerMid {
 
     public int recoverTab() {// 重新打开软件时恢复所有窗口
         // TODO 如果打开的文件被删,直接将临时文件转换成新文件
-        return -1;
+        SharedPreferences pNum = context.getSharedPreferences("num", Context.MODE_PRIVATE);
+
+        // 需要将窗口数目临时置为初始值
+        int cur_backup = pNum.getInt("cur", -1);
+        int total_backup = pNum.getInt("total", 0);
+        MainActivity.cur_num = -1;
+        MainActivity.total_num = 0;
+
+        // 逐个打开文件
+        try {
+            String tempPath = null;
+            String path = null;
+            File tempFile = null;
+            File file = null;
+            SharedPreferences pTab = context.getSharedPreferences("tab", Context.MODE_PRIVATE);
+            SharedPreferences pFile = context.getSharedPreferences("file", Context.MODE_PRIVATE);
+            SharedPreferences.Editor eFile = pFile.edit();
+            for (int i = 0; i < total_backup ; i ++) {
+                // 检查临时文件
+                tempPath = pTab.getString(i + "", null);// 获取对应临时文件路径 TODO 必须非空
+                tempFile = new File(tempPath);
+                if (tempFile.exists() == false) {// 没有就恢复
+                    tempFile.createNewFile();// TODO 父文件夹不存在
+                }
+
+                // 加载文件
+                loadTempFile(tempPath);// 如果有绑定的话,会修改tab名,会加载光标位置
+                path = pFile.getString(tempPath, null);
+                file = new File(path);
+                if (file.exists() == false) {// 绑定的文件不存在了,解除绑定
+                    eFile.putString(tempPath, null);
+                }
+            }
+            eFile.commit();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // 切换窗口
+        MainActivity.cur_num = cur_backup;
+        MainActivity.total_num = total_backup;
+
+        return 0;
     }
 
     public int checkFile() {// TODO 在软件运行中恢复被删除的(临时)文件
