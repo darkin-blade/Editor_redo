@@ -63,6 +63,7 @@
     <!-- 窗口tab高度/宽度 -->
     <dimen name="tab_height">30dp</dimen>
     <dimen name="tab_width">125dp</dimen>
+    <dimen name="tab_between">5dp</dimen>
 
     <!-- file_manager中每一项的高度 -->
     <dimen name="item_height">65dp</dimen>

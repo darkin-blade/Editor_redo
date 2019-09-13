@@ -47,7 +47,7 @@ public class ManagerMid extends ManagerLow {
 
             // TODO 修改tab的margin和大小
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(250, LinearLayout.LayoutParams.MATCH_PARENT);
-            layoutParams.setMargins(0, 0, 0, 0);
+            layoutParams.setMargins(-5, 0, -5, 0);
             btn.setLayoutParams(layoutParams);// 调整tab大小
             btn.setPadding(0, 0, 0, 0);
 
