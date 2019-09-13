@@ -38,6 +38,13 @@ public class ManagerMid extends ManagerLow {
             btn.setLayoutParams(new LinearLayout.LayoutParams(220, LinearLayout.LayoutParams.MATCH_PARENT));// 调整tab大小
             btn.setPadding(0, 0, 0, 0);
             btn.setId(MainActivity.button_id + MainActivity.total_num);// 添加tab标号
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    saveTemp();// 保存原窗口
+                    changeTab(view.getId() - MainActivity.button_id);
+                }
+            });
 
             // 添加tab
             LinearLayout tabs = view.findViewById(R.id.file_tab);
