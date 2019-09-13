@@ -6,13 +6,15 @@ import android.util.Log;
 
 import java.io.File;
 
-public class Editor {
-    private File file;
+public class GetPath {
     private String path;
-    private Uri content;
     private Context context;
 
-    public Editor(Context context) {
+    public GetPath() {
+        ;
+    }
+
+    public GetPath(Context context) {
         this.context = context;
     }
 
@@ -22,8 +24,6 @@ public class Editor {
     public String readFile(Uri uri) {
         if (uri == null)
             return null;
-
-        content = null;
 
         // Attempt to resolve content uri
         if (CONTENT.equalsIgnoreCase(uri.getScheme())) {
@@ -48,8 +48,7 @@ public class Editor {
     private Uri resolveContent(Uri uri) {
         String path = FileUtils.getPath(context, uri);
 
-        if (path != null)
-        {
+        if (path != null) {
             File file = new File(path);
             if (file.canRead())
                 uri = Uri.fromFile(file);

@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.editor.getpath.GetPath;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;

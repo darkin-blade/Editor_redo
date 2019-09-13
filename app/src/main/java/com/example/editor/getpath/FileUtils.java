@@ -28,6 +28,7 @@ public class FileUtils {
      *
      * @param context The context.
      * @param uri     The Uri to query.
+     * @author paulburke
      */
     @TargetApi(19)
     public static String getPath(final Context context, final Uri uri)
