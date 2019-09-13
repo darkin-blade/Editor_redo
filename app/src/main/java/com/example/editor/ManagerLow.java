@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,7 +13,6 @@ import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
-import java.util.regex.Pattern;
 
 public class ManagerLow extends GetPath {
 
@@ -111,7 +109,13 @@ public class ManagerLow extends GetPath {
         return -1;
     }
 
-    public int saveNum() {// 保存数字
+    public int saveNum() {// 保存当前窗口号,总窗口数
+        SharedPreferences pNum = context.getSharedPreferences("num", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pNum.edit();
+        editor.putInt("cur_num", MainActivity.cur_num);
+        editor.putInt("total_num", MainActivity.total_num);
+        editor.commit();
+        
         return -1;
     }
 
