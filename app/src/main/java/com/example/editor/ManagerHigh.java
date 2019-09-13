@@ -101,8 +101,11 @@ public class ManagerHigh extends ManagerMid {
         }
 
         // 加载文件
+        fuck("<" + path + ">");
         String tempPath = newTempFile();// 创建副本
-        readFile(path);// 加载真实文件
+        if (readFile(path) == -1) {// TODO 加载真实文件
+            closeTab();// TODO
+        }
         writeFile(tempPath);// 将文本框内容导入临时文件
 
         // 绑定临时文件

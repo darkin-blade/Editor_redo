@@ -44,7 +44,10 @@ public class ManagerLow extends GetPath {
     }
 
     public int readFile(String path) {// 读取文件到输入框
-        // TODO path == null
+        if (path == null) {// TODO
+            return -1;
+        }
+
         try {
             // 检查文件
             File file = new File(path);

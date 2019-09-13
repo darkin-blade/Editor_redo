@@ -295,12 +295,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        managerHigh.fuck("resume");
-    }
-
-    @Override
     public void onDestroy() {
         managerHigh.fuck("destroy");
 

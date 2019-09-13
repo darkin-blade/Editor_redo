@@ -27,7 +27,6 @@ public class GetPath {
 
         String path = null;
         String failed = null;// 不能解析时返回的String
-//                "this kind of path is not supported";
 
         // 以file://开头
         if (ContentResolver.SCHEME_FILE.equals(uri.getScheme())) {
