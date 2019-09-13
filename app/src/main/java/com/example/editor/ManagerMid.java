@@ -82,7 +82,7 @@ public class ManagerMid extends ManagerLow {
         }
     }
 
-    public int closeTab() {// 关闭当前窗口
+    public int closeTab() {// 关闭当前窗口,调整tab与临时文件的绑定
         if (MainActivity.cur_num == -1) {// TODO 提示
             return 1;
         }

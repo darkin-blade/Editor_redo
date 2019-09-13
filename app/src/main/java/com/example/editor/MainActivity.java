@@ -149,6 +149,9 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
                 } else {// 有绑定的文件
                     if (managerHigh.diffFile(path, tempPath)) {// 两个文件不同
                         editDialog.show(getSupportFragmentManager(), "edit");// 提示是否保存
+                    } else {
+                        managerHigh.unlinkTempFile(tempPath);// 解除与`打开文件`的绑定
+                        managerHigh.closeTab();// 直接关闭窗口
                     }
                 }
             }
