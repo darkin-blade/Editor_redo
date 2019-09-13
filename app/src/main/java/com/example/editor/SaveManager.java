@@ -78,8 +78,15 @@ public class SaveManager extends DialogFragment implements FileBroswer {// 主�
             @Override
             public void onClick(View view) {
                 path = curPath.getText().toString() + "/" + fileName.getText().toString();
-                result = 1;
-                dismiss();
+
+                // 判断有无重名
+                File file = new File(path);
+                if (file.exists() == false) {// 没有重名
+                    result = 1;
+                    dismiss();
+                } else {
+                    Toast.makeText(getContext(), path + " already exists", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
