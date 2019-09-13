@@ -77,7 +77,7 @@ public class SaveManager extends DialogFragment implements FileBroswer {// ä¸»åŠ
         yes.setOnClickListener(new View.OnClickListener() {//
             @Override
             public void onClick(View view) {
-                path = curPath.getText().toString() + fileName.getText().toString();
+                path = curPath.getText().toString() + "/" + fileName.getText().toString();
                 result = 1;
                 dismiss();
             }

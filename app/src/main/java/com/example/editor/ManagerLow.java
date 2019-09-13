@@ -67,6 +67,7 @@ public class ManagerLow extends GetPath {
     }
 
     public int writeFile(String path) {// 将输入框内容写入文件
+        fuck("write file: " + path);
         try {
             // 检查被写文件是否存在
             File file = new File(path);
