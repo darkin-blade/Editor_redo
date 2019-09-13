@@ -10,12 +10,30 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/title_height"
+        android:layout_height="@dimen/tab_height"
         android:background="@color/grey"
         android:text="Open file"
-        android:textSize="20dp"
+        android:textSize="@dimen/title_size"
         android:gravity="center">
     </TextView>
+
+    <View
+        style="@style/file_manager">
+    </View>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_height"
+        android:scrollbars="none">
+        <TextView
+            android:id="@+id/cur_path"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/grey"
+            android:maxLines="1"
+            android:gravity="center">
+        </TextView>
+    </HorizontalScrollView>
 
     <View
         style="@style/file_manager">
@@ -46,24 +64,6 @@
             android:background="@color/grey"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent">
-
-            <View
-                style="@style/file_manager">
-            </View>
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/tab_height"
-                android:scrollbars="none">
-                <TextView
-                    android:id="@+id/cur_path"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/grey"
-                    android:maxLines="1"
-                    android:gravity="center">
-                </TextView>
-            </HorizontalScrollView>
 
             <View
                 style="@style/file_manager">

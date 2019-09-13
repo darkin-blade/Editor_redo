@@ -35,7 +35,7 @@ public class ManagerMid extends ManagerLow {
 
             // 新建tab
             Button btn = new Button(context);
-            btn.setTextColor(Color.argb(0xff, 0xaa, 0xaa, 0xaa));
+            btn.setTextColor(Color.argb(0xff, 0x90, 0x90, 0x90));
             btn.setBackgroundResource(R.drawable.tab_notactive);// 置为不活跃
             btn.setId(MainActivity.button_id + MainActivity.total_num);// 添加tab标号
             btn.setOnClickListener(new View.OnClickListener() {
