@@ -282,10 +282,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         super.onPause();
         managerHigh.fuck("pause");
 
-        managerHigh.saveNum();// 保存窗口号
-        managerHigh.saveTemp();
-        managerHigh.saveCursor();// 保存光标
-
         onDestroy();// TODO
     }
 
@@ -306,10 +302,14 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         managerHigh.fuck("destroy");
 
+        managerHigh.saveNum();// 保存窗口号
+        managerHigh.saveTemp();
+        managerHigh.saveCursor();// 保存光标
+
         clearData();// TODO 测试用
+        super.onDestroy();
     }
 
     private void clearData() {
