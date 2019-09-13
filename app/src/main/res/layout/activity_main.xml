@@ -20,11 +20,11 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/title_height"
-            android:background="@color/blue_dark"
+            android:layout_height="@dimen/tab_height"
+            android:background="@color/title_black"
             android:text="@string/app_name"
             android:textColor="@color/white"
-            android:textSize="@dimen/tab_height"
+            android:textSize="20dp"
             android:gravity="center">
         </TextView>
 
@@ -35,7 +35,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/tab_height"
-                android:background="@color/blue_dark">
+                android:background="@color/tab_black">
             </View>
 
             <HorizontalScrollView
