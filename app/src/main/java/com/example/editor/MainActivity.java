@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
             managerHigh.writeFile(newManager.path);// 写入新建的文件
             SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
             String tempPath = pTab.getString(cur_num + "", null);// TODO 必须存在
-            managerHigh.unlinkTempFile(tempPath);// 解除(tab)链接
+            // TODO 不需要解除绑定
             managerHigh.closeTab();
         }
     }

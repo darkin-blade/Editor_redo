@@ -67,7 +67,19 @@ public class ManagerMid extends ManagerLow {
     }
 
     public int unlinkTempFile(String tempPath) {// 从磁盘中删除文件并解绑
-        return -1;
+        // 解除绑定
+        SharedPreferences pFile = context.getSharedPreferences("file", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pFile.edit();
+        editor.putString(tempPath, null);// 解除绑定
+
+        // 删除文件
+        File tempFile = new File(tempPath);
+        if (tempFile.exists() == false) {
+            return 1;
+        } else {
+            tempFile.delete();
+            return 0;
+        }
     }
 
     public int closeTab() {// 关闭当前窗口
