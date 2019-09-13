@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         initButton();
 
         // 恢复窗口数目
+        clearData();// TODO 测试用
         SharedPreferences pNum = getSharedPreferences("num", MODE_PRIVATE);
         cur_num = pNum.getInt("cur_num", -1);
         total_num = pNum.getInt("total_num", 0);
@@ -74,8 +75,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         }
     }
 
-    public void initParam() {// 初始化窗口和功能函数
-        clearData();// TODO 测试用
+    public void initParam() {// TODO 初始化窗口和功能函数
     }
 
     public void initButton() {// 按钮增加监听(重复操作无影响)
@@ -322,6 +322,18 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         // 清空临时文件和`文件`的绑定
         SharedPreferences pFile = getSharedPreferences("file", MODE_PRIVATE);
         editor = pFile.edit();
+        editor.clear();
+        editor.commit();
+
+        // 清空光标位置
+        SharedPreferences pCursor = getSharedPreferences("cursor", MODE_PRIVATE);
+        editor = pCursor.edit();
+        editor.clear();
+        editor.commit();
+
+        // 清空窗口数据
+        SharedPreferences pNum = getSharedPreferences("num", MODE_PRIVATE);
+        editor = pNum.edit();
         editor.clear();
         editor.commit();
 
