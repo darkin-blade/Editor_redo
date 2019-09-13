@@ -133,6 +133,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                managerHigh.saveTemp();// 先要将内容更新至临时文件
+
                 // 获取当前页面临时文件路径
                 SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
                 String tempPath = pTab.getString(cur_num + "", null);
