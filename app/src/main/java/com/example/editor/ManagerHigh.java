@@ -22,7 +22,24 @@ public class ManagerHigh extends ManagerMid {
         return -1;
     }
 
-    public int checkFile() {// 在软件运行中恢复被删除的文件
+    public int checkFile() {// TODO 在软件运行中恢复被删除的(临时)文件
+        try {
+            SharedPreferences pTab = context.getSharedPreferences("tab", Context.MODE_PRIVATE);
+            String tempPath = null;
+            File tempFile = null;
+            for (int i = 0; i < MainActivity.total_num ; i ++) {
+                tempPath = pTab.getString(i + "", null);// TODO 必须非空
+                tempFile = new File(tempPath);
+                if (tempFile.exists() == false) {// 被删掉了
+                    tempFile.createNewFile();
+                }
+            }
+
+            return 0;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return -1;
     }
 

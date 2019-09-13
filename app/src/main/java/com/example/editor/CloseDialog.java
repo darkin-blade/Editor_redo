@@ -60,7 +60,7 @@ public class CloseDialog extends DialogFragment {// 关闭新建文件显示的�
         no = view.findViewById(R.id.no_button);
         attention = view.findViewById(R.id.attention);
 
-        yes.setOnClickListener(new View.OnClickListener() {//
+        yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 result = 1;

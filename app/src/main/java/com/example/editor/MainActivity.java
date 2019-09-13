@@ -279,6 +279,15 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        managerHigh.fuck("resume");
+
+        // 恢复被删除的临时文件
+        managerHigh.checkFile();
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         managerHigh.fuck("destroy");
