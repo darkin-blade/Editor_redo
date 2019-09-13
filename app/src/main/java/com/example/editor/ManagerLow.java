@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
@@ -161,5 +162,35 @@ public class ManagerLow extends GetPath {
         }
 
         return -1;
+    }
+
+    public boolean diffFile(String path_1, String path_2) {
+        // 检查文件存在
+        File file_1 = new File(path_1);
+        File file_2 = new File(path_2);
+        if ((!file_1.exists()) || (!file_2.exists())) {// 有某一个不存在则返回`文件不相同`
+            return true;
+        }
+
+        // 比较文件大小
+        int len_1 = (int) file_1.length();
+        int len_2 = (int) file_2.length();
+        if (len_1 != len_2) {
+            return true;
+        }
+
+        // 比较文件内容
+        try {
+            RandomAccessFile ra_1 = new RandomAccessFile(file_1, "r");
+            RandomAccessFile ra_2 = new RandomAccessFile(file_2, "r");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        byte[] file_content = new byte[file_len];// 存储文件内容
+
+        // 读取文件内容
+        RandomAccessFile raFile = new RandomAccessFile(file, "r");
+        raFile.read(file_content);
+        return false;
     }
 }
