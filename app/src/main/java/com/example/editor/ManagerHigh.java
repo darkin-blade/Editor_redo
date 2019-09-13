@@ -55,6 +55,7 @@ public class ManagerHigh extends ManagerMid {
             String path = getPathFromUri(context, uri);// TODO 参数
             if (checkReopen(path)) {// 这个文件已经被打开过
                 Toast.makeText(context, path + " already loaded", Toast.LENGTH_SHORT).show();
+                return -1;
             }
 
             // 加载文件
