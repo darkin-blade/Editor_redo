@@ -80,22 +80,33 @@ public class ManagerMid extends ManagerLow {
         // 移动其余的tab
         String tempPath = null;
         SharedPreferences pTab = context.getSharedPreferences("tab", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = pTab.edit();
+        SharedPreferences.Editor eTab = pTab.edit();// 修改临时文件和窗口的绑定
+        SharedPreferences pCursor = context.getSharedPreferences("cursor", Context.MODE_PRIVATE);
+        SharedPreferences.Editor eCursor = pCursor.edit();// 修改窗口的光标位置的记录
+        int position = 0;
         if (MainActivity.cur_num + 2 <= MainActivity.total_num) {// 不是最后一个tab,且当前总tab >= 2
             for (int i = MainActivity.cur_num + 1; i < MainActivity.total_num ; i ++) {
                 // 修改tab与临时文件的绑定
                 tempPath = pTab.getString(i + "", null);// TODO 必须非空
-                editor.putString((i - 1) + "", tempPath);
+                eTab.putString((i - 1) + "", tempPath);
 
                 // 修改tab的id
                 btn = view.findViewById(i + MainActivity.button_id);
                 btn.setId(i - 1 + MainActivity.button_id);
+
+                // 修改tab的光标位置
+                position = pCursor.getInt(i + "", 0);
+                eCursor.putInt((i - 1) + "", position);
             }
         } else {// 是最后一个tab TODO 不管当前打开文件的数目
-            editor.putString(MainActivity.cur_num + "", null);// 解除tab的绑定
+            eTab.putString(MainActivity.cur_num + "", null);// 解除tab的绑定
+            eCursor.putInt(MainActivity.cur_num + "", 0);// 光标置为初始处
             MainActivity.cur_num --;// TODO 会现将该窗口置为不活跃
         }
-        editor.commit();
+
+        // 保存更改
+        eTab.commit();
+        eCursor.commit();
         MainActivity.total_num --;
         changeTab(MainActivity.cur_num);// 切换至临近窗口
 

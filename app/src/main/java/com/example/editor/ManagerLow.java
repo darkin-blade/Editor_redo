@@ -145,8 +145,13 @@ public class ManagerLow extends GetPath {
 
         // 移动光标
         EditText text = view.findViewById(R.id.text_input);
-        text.setSelection(position);
+        int text_len = text.getText().length();
+        if (position > text_len) {// 文件遭到修改
+            position = 0;
+        }
+
         fuck("put " + position);
+        text.setSelection(position);
 
         return -1;
     }
