@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
@@ -79,6 +80,14 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
     }
     
     public void readPath(final String dirPath, View manager) {
+        // 特判根目录
+        if (dirPath == null) {
+            result = 0;
+            Toast.makeText(getContext(), "can't access this path", Toast.LENGTH_SHORT).show();
+            dismiss();// 强制返回
+            return;
+        }
+
         // 清空并显示父目录
         LinearLayout layout = manager.findViewById(R.id.item_list);
         layout.removeAllViews();
