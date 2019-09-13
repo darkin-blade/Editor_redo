@@ -181,6 +181,7 @@ public class ManagerLow extends GetPath {
 
         // 比较文件内容
         try {
+            // 逐byte比较
             RandomAccessFile ra_1 = new RandomAccessFile(file_1, "r");
             RandomAccessFile ra_2 = new RandomAccessFile(file_2, "r");
             byte[] content_1 = new byte[1];
@@ -188,7 +189,9 @@ public class ManagerLow extends GetPath {
             for (int i = 0; i < len_1 ; i ++) {
                 ra_1.read(content_1, 0, 1);
                 ra_2.read(content_2, 0, 1);
-                fuck(content_1[0] + "<=>" + content_2[0]);
+                if (content_1[0] != content_2[0]) {
+                    return false;
+                }
             }
 
             return true;

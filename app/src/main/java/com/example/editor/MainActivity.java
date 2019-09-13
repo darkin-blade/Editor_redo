@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     }
 
     public void initParam() {// 初始化窗口和功能函数
-        clearData();// TODO 测试用
-
         // 初始化窗口
         closeDialog = new CloseDialog();
         editDialog = new EditDialog();
@@ -72,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         if (check_result != PackageManager.PERMISSION_GRANTED) {// 没有`写`权限
             ActivityCompat.requestPermissions(this, new String[]{permission}, 1);// 获取`写`权限
         }
+
+        clearData();// TODO 测试用
     }
 
     public void initButton() {
@@ -240,6 +240,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         editor.commit();
 
         // TODO 其余测试
-        managerHigh.diffFile(managerHigh.appPath + "/temp0", managerHigh.appPath + "/temp1");
+//        managerHigh.diffFile(managerHigh.appPath + "/temp0", managerHigh.appPath + "/temp1");
     }
 }
