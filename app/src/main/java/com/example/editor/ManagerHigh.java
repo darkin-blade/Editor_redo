@@ -49,6 +49,9 @@ public class ManagerHigh extends ManagerMid {
                 // 加载文件
                 loadTempFile(tempPath);// 如果有绑定的话,会修改tab名,会加载光标位置
                 path = pFile.getString(tempPath, null);
+                if (path == null) {// 没有绑定文件
+                    continue;
+                }
                 file = new File(path);
                 if (file.exists() == false) {// 绑定的文件不存在了,解除绑定
                     eFile.putString(tempPath, null);

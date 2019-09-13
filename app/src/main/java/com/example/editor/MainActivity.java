@@ -296,7 +296,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         managerHigh.saveTemp();
         managerHigh.saveCursor();// 保存光标
 
-        clearData();// TODO 测试用
+//        clearData();// TODO 测试用
         super.onDestroy();
     }
 
