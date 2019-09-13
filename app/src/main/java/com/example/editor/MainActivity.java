@@ -47,7 +47,14 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         managerHigh.recoverTab();
         if (MainActivity.total_num == 0) {// 如果没有打开任何文件,那么不可编辑
             EditText text = findViewById(R.id.text_input);
-            text.setFocusable(false);// 不可输入
+            text.setEnabled(false);// 不可输入
+        }
+
+        // 恢复按钮位置
+        SharedPreferences pNum = getSharedPreferences("num", MODE_PRIVATE);
+        if (pNum.getInt("move", 1) < 0) {
+            Button btnCtrl = findViewById(R.id.ctrlButton);
+            btnCtrl.callOnClick();// 向右移
         }
 
         // 从外部打开
@@ -96,6 +103,12 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
                 } else {// `隐藏`按钮
                     temp.setBackgroundResource(R.drawable.button_hide);
                 }
+
+                // 保存按钮位置
+                SharedPreferences pNum = getSharedPreferences("num", MODE_PRIVATE);
+                SharedPreferences.Editor editor = pNum.edit();
+                editor.putInt("move", button_move);// 如果为正说明没有收起
+                editor.commit();
             }
         });
 

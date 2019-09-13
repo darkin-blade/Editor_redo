@@ -70,7 +70,7 @@ public class ManagerMid extends ManagerLow {
             if (MainActivity.total_num == 1) {
                 fuck("editable");
                 EditText text = view.findViewById(R.id.text_input);
-                text.setFocusable(true);
+                text.setEnabled(true);
             }
 
             return 0;
@@ -130,10 +130,10 @@ public class ManagerMid extends ManagerLow {
         // 当关闭最后一个窗口后将输入框设置为不可编辑
         if (MainActivity.total_num == 0) {
             EditText text = view.findViewById(R.id.text_input);
-            text.setFocusable(false);// 不可输入
+            text.setEnabled(false);// 不可输入
         }
 
-        return -1;
+        return 0;
     }
 
     public int changeTab(int next_num) {// 切换标签页,会加载光标
