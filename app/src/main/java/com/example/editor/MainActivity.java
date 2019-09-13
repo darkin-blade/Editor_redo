@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
                 SharedPreferences pFile = getSharedPreferences("file", MODE_PRIVATE);
                 String path = pFile.getString(tempPath, null);
                 if (path == null) {// 新建的文件
-                    newManager.show(getSupportFragmentManager(), "new");// 选择保存的位置
+                    closeDialog.show(getSupportFragmentManager(), "close");// 提示是否保存新建文件
                 } else {// 有绑定的文件
                     if (managerHigh.diffFile(path, tempPath)) {// 两个文件不同
                         editDialog.show(getSupportFragmentManager(), "edit");// 提示是否保存
