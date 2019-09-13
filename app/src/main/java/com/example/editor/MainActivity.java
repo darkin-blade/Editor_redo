@@ -21,13 +21,13 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     NewManager newManager;// 2
     OpenManager openManager;// 3
     SaveManager saveManager;// 4
-    static int window_num;// 调用哪个窗口
 
     ManagerHigh managerHigh;
 
     static int button_move = 280;// 底端button平移距离
     static final int button_id = 1234321;// 防id冲突
 
+    static int window_num;// 调用哪个dialog/manager
     static int cur_num;// 当前窗口号
     static int total_num;// 总窗口号
 
@@ -37,26 +37,39 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initParam();
+        // 重复操作无影响
+        initFunc();
         initButton();
+
+        // 恢复窗口数目
+        SharedPreferences pNum = getSharedPreferences("num", MODE_PRIVATE);
+        cur_num = pNum.getInt("cur_num", -1);
+        total_num = pNum.getInt("total_num", 0);
+        if (cur_num == -1 && total_num == 0) {// 没有打开任何文件
+            ;
+        }
+
+        initParam();
 
         // 从外部打开
         Intent intent = getIntent();
         managerHigh.outerOpen(intent);// 在内部判断是否是由外部打开
     }
 
-    public void initParam() {// 初始化窗口和功能函数
+    public void initFunc() {// 该部分重复操作无影响
         // 初始化窗口
         closeDialog = new CloseDialog();
         editDialog = new EditDialog();
         newManager = new NewManager();
         openManager = new OpenManager();
         saveManager = new SaveManager();
-        window_num = -1;
 
         // 初始化功能函数
         View view = getWindow().getDecorView().findViewById(android.R.id.content);// TODO
         managerHigh = new ManagerHigh(MainActivity.this, getExternalFilesDir("").getAbsolutePath(), view);
+    }
+
+    public void initParam() {// 初始化窗口和功能函数
 
         // 初始化窗口号
         cur_num = -1;
@@ -72,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         clearData();// TODO 测试用
     }
 
-    public void initButton() {
+    public void initButton() {// 按钮增加监听(重复操作无影响)
         // 控制`隐藏/显示`按钮
         Button btnCtrl = findViewById(R.id.ctrlButton);
         btnCtrl.setOnClickListener(new View.OnClickListener() {
