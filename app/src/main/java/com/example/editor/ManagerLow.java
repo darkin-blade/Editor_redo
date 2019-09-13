@@ -31,6 +31,7 @@ public class ManagerLow extends GetPath {
         SharedPreferences pFile = context.getSharedPreferences("file", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = pFile.edit();
         editor.putString(tempPath, null);// 不管原来是什么,直接覆盖
+        editor.commit();
 
         // 删除文件
         File tempFile = new File(tempPath);
