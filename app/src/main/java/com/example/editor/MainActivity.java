@@ -206,6 +206,9 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
             SharedPreferences.Editor editor = pFile.edit();
             editor.putString(tempPath, saveManager.path);
             editor.commit();
+
+            // 更新文件名
+            managerHigh.loadName();
         }
     }
 
