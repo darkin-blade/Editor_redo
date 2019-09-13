@@ -35,8 +35,6 @@ public class ManagerMid extends ManagerLow {
             // 新建tab
             Button btn = new Button(context);
             btn.setBackgroundResource(R.drawable.tab_notactive);// 置为不活跃
-            btn.setLayoutParams(new LinearLayout.LayoutParams(220, LinearLayout.LayoutParams.MATCH_PARENT));// 调整tab大小
-            btn.setPadding(0, 0, 0, 0);
             btn.setId(MainActivity.button_id + MainActivity.total_num);// 添加tab标号
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -46,6 +44,12 @@ public class ManagerMid extends ManagerLow {
                     changeTab(view.getId() - MainActivity.button_id);
                 }
             });
+
+            // TODO 修改tab的margin和大小
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(250, LinearLayout.LayoutParams.MATCH_PARENT);
+            layoutParams.setMargins(-10, 0, 0, -10);
+            btn.setLayoutParams(layoutParams);// 调整tab大小
+            btn.setPadding(0, 0, 0, 0);
 
             // 添加tab
             LinearLayout tabs = view.findViewById(R.id.file_tab);

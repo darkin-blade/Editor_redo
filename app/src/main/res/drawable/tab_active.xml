@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/tab_width"
-    android:layout_height="@dimen/tab_height">
-    <solid android:color="@color/grey" />
-    <corners
-        android:topLeftRadius="10dp"
-        android:topRightRadius="10dp"/>
-</shape>
+
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="125dp"
+    android:height="30dp"
+    android:viewportWidth="125"
+    android:viewportHeight="30">
+
+    <path
+        android:fillColor="#fafafa"
+        android:pathData="M0,30 Q4,29 5,25 L5,5 Q6,1 10,0
+        L115,0 Q119,1 120,5 L120,25 Q121,29 125,30"
+        android:strokeWidth="1"
+        android:strokeColor="#666666">
+    </path>
+
+</vector>
