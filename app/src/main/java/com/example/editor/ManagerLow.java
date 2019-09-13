@@ -115,11 +115,35 @@ public class ManagerLow extends GetPath {
         editor.putInt("cur_num", MainActivity.cur_num);
         editor.putInt("total_num", MainActivity.total_num);
         editor.commit();
-        
+
         return -1;
     }
 
     public int saveCursor() {// 保存光标位置
+        // 获取位置
+        EditText text = view.findViewById(R.id.text_input);
+        int position = text.getSelectionStart();// TODO end?
+        fuck("get " + position);
+
+        // 保存位置
+        SharedPreferences pCursor = context.getSharedPreferences("cursor", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pCursor.edit();
+        editor.putInt(MainActivity.cur_num + "", position);// 保存当前窗口的光标位置
+        editor.commit();
+
+        return 0;
+    }
+
+    public int loadCursor() {// 加载当前窗口的光标位置
+        // 获取位置
+        SharedPreferences pCursor = context.getSharedPreferences("cursor", Context.MODE_PRIVATE);
+        int position = pCursor.getInt(MainActivity.cur_num + "", 0);// 如果没有的话返回0
+
+        // 移动光标
+        EditText text = view.findViewById(R.id.text_input);
+        text.setSelection(position);
+        fuck("put " + position);
+
         return -1;
     }
 
@@ -139,7 +163,6 @@ public class ManagerLow extends GetPath {
 
     public boolean checkReopen(String path) {// 检查是否重复打开文件
         if (path == null) {
-            fuck("null");
             return false;
         }
 
