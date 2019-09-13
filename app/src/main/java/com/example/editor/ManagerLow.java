@@ -131,8 +131,10 @@ public class ManagerLow extends GetPath {
         SharedPreferences pFile = context.getSharedPreferences("file", Context.MODE_PRIVATE);
         for (int i = 0; i < MainActivity.total_num ; i ++) {
             tempPath = pTab.getString(i + "", null);// TODO 必须非空
-            fuck(pFile.getString(tempPath, null) + "<=>" + path);
-            if (pFile.getString(tempPath, null).equals(path)) {// 有重复
+            String bindPath = pFile.getString(tempPath, null);
+            if (bindPath == null) {// 新文件
+                continue;
+            } else if (bindPath.equals(path)) {// 有重复
                 return true;
             }
         }
