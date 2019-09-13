@@ -26,7 +26,6 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
 
     public int result;
     public String path;// 文件路径
-    public File file;// 文件
 
     int item_height = 130;
     int type_padding = 20;
@@ -168,8 +167,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
             item.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    file = new File(itemPath + "/" + itemName);
-                    path = file.getAbsolutePath();
+                    path = itemPath + "/" + itemName;
                     result = 1;
                     dismiss();
                 }

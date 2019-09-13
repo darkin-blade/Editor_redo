@@ -27,7 +27,6 @@ public class SaveManager extends DialogFragment implements FileBroswer {// 主�
 
     public int result;
     public String path;// 文件路径
-    public File file;// 文件
 
     int item_height = 130;
     int type_padding = 20;

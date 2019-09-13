@@ -190,7 +190,21 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         }
     }
 
-    public void resSave() {
+    public void resSave() {// 主动保存
+        if (saveManager.result == 0) {// 取消保存
+            return;
+        } else {
+            // 将内容写入新的文件
+            managerHigh.writeFile(saveManager.path);
+
+            // 绑定文件
+            SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
+            String tempPath = pTab.getString(cur_num + "", null);// TODO 必须非空
+            SharedPreferences pFile = getSharedPreferences("file", MODE_PRIVATE);// 绑定文件
+            SharedPreferences.Editor editor = pFile.edit();
+            editor.putString(tempPath, saveManager.path);
+            editor.commit();
+        }
     }
 
     @Override
