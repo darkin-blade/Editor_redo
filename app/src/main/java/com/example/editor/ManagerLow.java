@@ -112,11 +112,13 @@ public class ManagerLow extends GetPath {
     public int saveNum() {// 保存当前窗口号,总窗口数
         SharedPreferences pNum = context.getSharedPreferences("num", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = pNum.edit();
-        editor.putInt("cur_num", MainActivity.cur_num);
-        editor.putInt("total_num", MainActivity.total_num);
+        editor.putInt("cur", MainActivity.cur_num);
+        editor.putInt("total", MainActivity.total_num);
         editor.commit();
 
-        return -1;
+        fuck("save num: " + MainActivity.cur_num + "/" + MainActivity.total_num);
+
+        return 0;
     }
 
     public int saveCursor() {// 保存光标位置

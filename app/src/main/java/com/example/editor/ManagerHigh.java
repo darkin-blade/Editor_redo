@@ -27,6 +27,7 @@ public class ManagerHigh extends ManagerMid {
         int total_backup = pNum.getInt("total", 0);
         MainActivity.cur_num = -1;
         MainActivity.total_num = 0;
+        fuck(cur_backup + "/" + total_backup);
 
         // 逐个打开文件
         try {
