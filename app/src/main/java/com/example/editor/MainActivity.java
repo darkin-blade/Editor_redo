@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         }
     }
 
-    public void resOpen() {
+    public void resOpen() {// 主动打开文件
         managerHigh.fuck("resOpen");
         if (openManager.result == 0) {// `取消`打开文件
             return;
