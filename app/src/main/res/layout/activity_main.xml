@@ -44,11 +44,14 @@
                 android:scrollbars="none">
                 <LinearLayout
                     android:id="@+id/file_tab"
-                    android:paddingLeft="@dimen/tab_between"
-                    android:paddingRight="@dimen/tab_between"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
+                    <View
+                        android:layout_width="@dimen/tab_between"
+                        android:layout_height="match_parent"
+                        android:background="@color/transparent">
+                    </View>
                 </LinearLayout>
             </HorizontalScrollView>
 

@@ -3,20 +3,20 @@
 <vector
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="125dp"
-    android:height="30dp"
+    android:height="35dp"
     android:viewportWidth="125"
-    android:viewportHeight="30">
+    android:viewportHeight="35">
 
     <path
         android:fillColor="#fafafa"
-        android:pathData="M5,25 L5,5"
+        android:pathData="M5,30 L5,5"
         android:strokeWidth="0.5"
         android:strokeColor="#666666">
     </path>
 
     <path
         android:fillColor="#fafafa"
-        android:pathData="M120,5 L120,25"
+        android:pathData="M120,5 L120,30"
         android:strokeWidth="0.5"
         android:strokeColor="#666666">
     </path>
