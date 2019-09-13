@@ -2,6 +2,7 @@ package com.example.editor;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +35,7 @@ public class ManagerMid extends ManagerLow {
 
             // 新建tab
             Button btn = new Button(context);
+            btn.setTextColor(Color.argb(0xff, 0xaa, 0xaa, 0xaa));
             btn.setBackgroundResource(R.drawable.tab_notactive);// 置为不活跃
             btn.setId(MainActivity.button_id + MainActivity.total_num);// 添加tab标号
             btn.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +49,7 @@ public class ManagerMid extends ManagerLow {
 
             // TODO 修改tab的margin和大小
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(250, LinearLayout.LayoutParams.MATCH_PARENT);
-            layoutParams.setMargins(-5, 0, -5, 0);
+            layoutParams.setMargins(-20, 0, 0, 0);
             btn.setLayoutParams(layoutParams);// 调整tab大小
             btn.setPadding(0, 0, 0, 0);
 
