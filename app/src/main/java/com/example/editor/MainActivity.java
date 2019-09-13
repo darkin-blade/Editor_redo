@@ -3,6 +3,7 @@ package com.example.editor;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import android.animation.ObjectAnimator;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -78,6 +79,18 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         btnCtrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+                // 隐藏/显示所有按钮
+                ObjectAnimator animator = ObjectAnimator.ofFloat(findViewById(R.id.buttons), "translationX", button_move + Math.abs(button_move));
+                animator.setDuration(250);
+                animator.start();
+                button_move = -button_move;
+                // 修改`隐藏/显示`按钮样式
+                Button temp = findViewById(R.id.ctrlButton);
+                if (button_move == -Math.abs(button_move)) {// 此时为`显示`按钮
+                    temp.setBackgroundResource(R.drawable.button_show);
+                } else {// `隐藏`按钮
+                    temp.setBackgroundResource(R.drawable.button_hide);
+                }
             }
         });
 
