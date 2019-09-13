@@ -42,6 +42,7 @@ public class ManagerMid extends ManagerLow {
                 @Override
                 public void onClick(View view) {
                     saveTemp();// 保存原窗口
+                    saveCursor();// 保存光标
                     changeTab(view.getId() - MainActivity.button_id);
                 }
             });
