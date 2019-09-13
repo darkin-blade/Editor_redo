@@ -46,10 +46,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         cur_num = pNum.getInt("cur_num", -1);
         total_num = pNum.getInt("total_num", 0);
         if (cur_num == -1 && total_num == 0) {// 没有打开任何文件
-            ;
+            initParam();
         }
-
-        initParam();
 
         // 从外部打开
         Intent intent = getIntent();
@@ -67,13 +65,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         // 初始化功能函数
         View view = getWindow().getDecorView().findViewById(android.R.id.content);// TODO
         managerHigh = new ManagerHigh(MainActivity.this, getExternalFilesDir("").getAbsolutePath(), view);
-    }
-
-    public void initParam() {// 初始化窗口和功能函数
-
-        // 初始化窗口号
-        cur_num = -1;
-        total_num = 0;
 
         // 检查权限
         String permission = "android.permission.WRITE_EXTERNAL_STORAGE";
@@ -81,7 +72,9 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         if (check_result != PackageManager.PERMISSION_GRANTED) {// 没有`写`权限
             ActivityCompat.requestPermissions(this, new String[]{permission}, 1);// 获取`写`权限
         }
+    }
 
+    public void initParam() {// 初始化窗口和功能函数
         clearData();// TODO 测试用
     }
 
