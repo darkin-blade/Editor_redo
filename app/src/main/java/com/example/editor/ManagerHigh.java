@@ -44,6 +44,7 @@ public class ManagerHigh extends ManagerMid {
     }
 
     public int outerOpen(Intent intent) {// 由其他应用打开的文件
+        fuck("outer open");
         String action = intent.getAction();// 判断本软件启动的方式
         if (action.equals("android.intent.action.VIEW")) {// 由其他软件打开本软件
             Uri uri = intent.getData();

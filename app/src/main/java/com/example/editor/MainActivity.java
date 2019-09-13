@@ -41,10 +41,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         // 从外部打开
         Intent intent = getIntent();
         managerHigh.outerOpen(intent);// 在内部判断是否是由外部打开
-
-        File file1 = new File("/a/.././././a");
-        File file2 = new File("/a/a/..");
-        managerHigh.fuck((file1 == file2) + "");
     }
 
     public void initParam() {// 初始化窗口和功能函数
