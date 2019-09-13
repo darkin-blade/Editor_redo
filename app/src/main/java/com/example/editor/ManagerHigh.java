@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.io.File;
@@ -55,8 +53,8 @@ public class ManagerHigh extends ManagerMid {
 
             // 获取文件地址
             String path = getPathFromUri(context, uri);// TODO 参数
-            if (checkTemp(path)) {// 是临时文件
-                Toast.makeText(context, "can't load tempFile " + path, Toast.LENGTH_SHORT).show();
+            if (checkReopen(path)) {// 这个文件已经被打开过
+                Toast.makeText(context, path + " already loaded", Toast.LENGTH_SHORT).show();
             }
 
             // 加载文件

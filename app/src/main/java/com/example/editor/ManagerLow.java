@@ -119,22 +119,22 @@ public class ManagerLow extends GetPath {
         }
     }
 
-    public boolean checkTemp(String path) {// 检查是否是临时文件
+    public boolean checkReopen(String path) {// 检查是否重复打开文件
         if (path == null) {
             return false;
         }
 
-        // 先检查是否是app目录
-        File file = new File(path);
-        String dirPath = file.getParent();// TODO 不包含"/."
-        if (!Pattern.matches(dirPath + "(/.)*(/)*", appPath)) {// 如果不是app目录
-            return false;
+        // 遍历所有已打开的文件名,查看是否有重复的
+        String tempPath = null;
+        SharedPreferences pTab = context.getSharedPreferences("tab", Context.MODE_PRIVATE);
+        SharedPreferences pFile = context.getSharedPreferences("file", Context.MODE_PRIVATE);
+        for (int i = 0; i < MainActivity.total_num ; i ++) {
+            tempPath = pTab.getString(i + "", null);// TODO 必须非空
+            if (pFile.getString(tempPath, null) == path) {// 有重复
+                return true;
+            }
         }
 
-        // 再检查是否是临时文件名
-        if (!Pattern.matches("^temp\\d{1,2}$", file.getName())) {// 不是临时文件名
-            return false;
-        }
-        return true;
+        return false;
     }
 }

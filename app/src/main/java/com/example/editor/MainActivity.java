@@ -1,23 +1,15 @@
 package com.example.editor;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import android.animation.ObjectAnimator;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.io.File;
@@ -161,8 +153,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         if (openManager.result == 0) {// `取消`打开文件
             return;
         } else {
-            // 检查是否是临时文件
-            if (managerHigh.checkTemp(openManager.path)) {
+            // 检查文件是否重复打开
+            if (managerHigh.checkReopen(openManager.path)) {
                 Toast.makeText(this, "can't load tempFile " + openManager.path, Toast.LENGTH_SHORT).show();
                 return;
             }
