@@ -63,8 +63,7 @@ public class ManagerHigh extends ManagerMid {
         }
 
         // 切换窗口
-        MainActivity.cur_num = cur_backup;
-        MainActivity.total_num = total_backup;
+        changeTab(cur_backup);
 
         return 0;
     }
