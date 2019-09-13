@@ -107,6 +107,21 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // 获取当前页面临时文件路径
+                SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
+                String tempPath = pTab.getString(cur_num + "", null);
+                if (tempPath == null) {// 没有打开文件
+                    return;
+                }
+
+                // 获取绑定文件的路径
+                SharedPreferences pFile = getSharedPreferences("file", MODE_PRIVATE);
+                String path = pFile.getString(tempPath, null);
+                if (path == null) {// 新建的文件
+                    saveManager.show(getSupportFragmentManager(), "save");
+                } else {// 有绑定的文件
+                    managerHigh.writeFile(path);// TODO 比较两个文件
+                }
             }
         });
 

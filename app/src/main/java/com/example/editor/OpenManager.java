@@ -21,6 +21,9 @@ import java.io.File;
 public class OpenManager extends DialogFragment implements FileBroswer {// 打开文件
     public Button yes;
     public Button cancel;
+    public TextView curPath;
+
+
     public int result;
     public String path;// 文件路径
     public File file;// 文件
@@ -69,6 +72,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
 
     private void initButton(View view) {
         cancel = view.findViewById(R.id.cancel_button);
+        curPath = view.findViewById(R.id.cur_path);// 路径框
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,7 +111,6 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
         }
 
         // 显示路径
-        TextView curPath = manager.findViewById(R.id.cur_path);
         curPath.setText(dirPath);// TODO 简化路径
     }
 
