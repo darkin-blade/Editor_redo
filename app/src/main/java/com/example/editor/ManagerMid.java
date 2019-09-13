@@ -98,6 +98,10 @@ public class ManagerMid extends ManagerLow {
                 position = pCursor.getInt(i + "", 0);
                 eCursor.putInt((i - 1) + "", position);
             }
+
+            // 最后一个tab清空
+            eTab.putString((MainActivity.total_num - 1) + "", null);
+            eCursor.putInt((MainActivity.total_num - 1) + "", 0);
         } else {// 是最后一个tab TODO 不管当前打开文件的数目
             eTab.putString(MainActivity.cur_num + "", null);// 解除tab的绑定
             eCursor.putInt(MainActivity.cur_num + "", 0);// 光标置为初始处

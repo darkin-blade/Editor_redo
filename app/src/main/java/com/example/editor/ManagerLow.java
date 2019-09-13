@@ -121,7 +121,6 @@ public class ManagerLow extends GetPath {
     }
 
     public int saveCursor() {// 保存光标位置
-
         if (MainActivity.cur_num == -1) {// 乱点按钮的情况
             return 1;
         }
