@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
             @Override
             public void onClick(View view) {
                 managerHigh.saveTemp();
+                managerHigh.saveCursor();// 保存光标
                 String tempPath = managerHigh.newTempFile();
                 managerHigh.loadTempFile(tempPath);
             }
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
             @Override
             public void onClick(View view) {
                 managerHigh.saveTemp();
+                managerHigh.saveCursor();// 保存光标
                 openManager.show(getSupportFragmentManager(), "open");
             }
         });
@@ -134,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
             @Override
             public void onClick(View view) {
                 managerHigh.saveTemp();// 先要将内容更新至临时文件
+                managerHigh.saveCursor();// 保存光标
 
                 // 获取当前页面临时文件路径
                 SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);

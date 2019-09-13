@@ -131,7 +131,7 @@ public class ManagerMid extends ManagerLow {
             }
             readFile(tempPath);
 
-            // TODO 加载光标位置
+            loadCursor();// TODO 加载光标位置
 
             return 0;
         } catch (IOException e) {
