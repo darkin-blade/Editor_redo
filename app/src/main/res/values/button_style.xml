@@ -68,7 +68,7 @@
     <dimen name="item_height">65dp</dimen>
 
     <!-- save_manager底部提示框高度 -->
-    <dimen name="save_height">210dp</dimen>
+    <dimen name="save_height">170dp</dimen>
 
     <!-- open_manager底部提示框高度 -->
     <dimen name="open_height">110dp</dimen>

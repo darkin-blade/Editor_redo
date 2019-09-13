@@ -50,16 +50,6 @@
                 style="@style/file_manager">
             </View>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/tab_height"
-                android:background="@color/grey">
-            </TextView>
-
-            <View
-                style="@style/file_manager">
-            </View>
-
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/tab_height"
@@ -73,6 +63,10 @@
                     android:gravity="center">
                 </TextView>
             </HorizontalScrollView>
+
+            <View
+                style="@style/file_manager">
+            </View>
 
             <EditText
                 android:id="@+id/file_name"
