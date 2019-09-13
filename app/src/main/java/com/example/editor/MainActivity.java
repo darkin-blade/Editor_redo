@@ -133,6 +133,24 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // 获取当前页面临时文件路径
+                SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
+                String tempPath = pTab.getString(cur_num + "", null);
+                if (tempPath == null) {// 没有打开文件
+                    Toast.makeText(MainActivity.this, "you don't open any file", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // 获取绑定文件的路径
+                SharedPreferences pFile = getSharedPreferences("file", MODE_PRIVATE);
+                String path = pFile.getString(tempPath, null);
+                if (path == null) {// 新建的文件
+                    newManager.show(getSupportFragmentManager(), "new");// 选择保存的位置
+                } else {// 有绑定的文件
+                    if (managerHigh.diffFile(path, tempPath)) {// 两个文件不同
+                        editDialog.show(getSupportFragmentManager(), "edit");// 提示是否保存
+                    }
+                }
             }
         });
     }
