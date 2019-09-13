@@ -150,8 +150,11 @@ public class ManagerMid extends ManagerLow {
 
         // 将下一窗口置为活跃
         Button tabNext = view.findViewById(MainActivity.button_id + next_num);
-        if (tabNext == null) {// TODO 不清楚
-            return -1;
+        if (tabNext == null) {// 关闭最后一个tab时
+            EditText text = view.findViewById(R.id.text_input);
+            text.setText("");// 清空
+
+            return 1;
         }
         tabNext.setBackgroundResource(R.drawable.tab_active);
 
