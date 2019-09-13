@@ -38,8 +38,6 @@ public class ManagerMid extends ManagerLow {
             btn.setLayoutParams(new LinearLayout.LayoutParams(220, LinearLayout.LayoutParams.MATCH_PARENT));// 调整tab大小
             btn.setPadding(0, 0, 0, 0);
             btn.setId(MainActivity.button_id + MainActivity.total_num);// 添加tab标号
-            MainActivity.cur_num = MainActivity.total_num;
-            MainActivity.total_num ++;
 
             // 添加tab
             LinearLayout tabs = view.findViewById(R.id.file_tab);
@@ -49,7 +47,9 @@ public class ManagerMid extends ManagerLow {
             readFile(tempPath);// TODO 光标位置
 
             // 切换至新标签
-            changeTab(MainActivity.cur_num);
+            changeTab(MainActivity.total_num);
+            MainActivity.cur_num = MainActivity.total_num;
+            MainActivity.total_num ++;
             loadName();// tab显示文件名
 
             return 0;
@@ -90,6 +90,8 @@ public class ManagerMid extends ManagerLow {
     }
 
     public int changeTab(int next_num) {// 切换标签页
+        fuck(MainActivity.cur_num + "=>" + next_num);
+
         // 将上一窗口置为不活跃
         Button tabLast = view.findViewById(MainActivity.button_id + MainActivity.cur_num);
         if (tabLast != null) {
