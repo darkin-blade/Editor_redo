@@ -183,14 +183,21 @@ public class ManagerLow extends GetPath {
         try {
             RandomAccessFile ra_1 = new RandomAccessFile(file_1, "r");
             RandomAccessFile ra_2 = new RandomAccessFile(file_2, "r");
+            byte[] content_1 = new byte[1];
+            byte[] content_2 = new byte[1];
+            for (int i = 0; i < len_1 ; i ++) {
+                ra_1.read(content_1, 0, 1);
+                ra_2.read(content_2, 0, 1);
+                fuck(content_1[0] + "<=>" + content_2[0]);
+            }
+
+            return true;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        byte[] file_content = new byte[file_len];// 存储文件内容
 
-        // 读取文件内容
-        RandomAccessFile raFile = new RandomAccessFile(file, "r");
-        raFile.read(file_content);
         return false;
     }
 }

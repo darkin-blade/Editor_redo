@@ -238,5 +238,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         editor = pFile.edit();
         editor.clear();
         editor.commit();
+
+        // TODO 其余测试
+        managerHigh.diffFile(managerHigh.appPath + "/temp0", managerHigh.appPath + "/temp1");
     }
 }
