@@ -19,9 +19,10 @@ public class ManagerHigh extends ManagerMid {
 
     public int recoverTab() {// 重新打开软件时恢复所有窗口
         // TODO 如果打开的文件被删,直接将临时文件转换成新文件
-        SharedPreferences pNum = context.getSharedPreferences("num", Context.MODE_PRIVATE);
+        fuck("recover tab");
 
         // 需要将窗口数目临时置为初始值
+        SharedPreferences pNum = context.getSharedPreferences("num", Context.MODE_PRIVATE);
         int cur_backup = pNum.getInt("cur", -1);
         int total_backup = pNum.getInt("total", 0);
         MainActivity.cur_num = -1;

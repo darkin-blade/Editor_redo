@@ -291,6 +291,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     public void onDestroy() {
         managerHigh.fuck("destroy");
 
+        // 保存所有临时数据
         managerHigh.saveNum();// 保存窗口号
         managerHigh.saveTemp();
         managerHigh.saveCursor();// 保存光标
