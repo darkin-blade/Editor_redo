@@ -41,21 +41,21 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         initFunc();
         initButton();
 
-        // 恢复窗口数目
         clearData();// TODO 测试用
+
+        // 恢复窗口数目
         SharedPreferences pNum = getSharedPreferences("num", MODE_PRIVATE);
         cur_num = pNum.getInt("cur_num", -1);
         total_num = pNum.getInt("total_num", 0);
-        if (cur_num == -1 && total_num == 0) {// 没有打开任何文件
-            initParam();
-        }
+        
+        managerHigh.fuck(cur_num + " : " + total_num);// TODO
 
         // 从外部打开
         Intent intent = getIntent();
         managerHigh.outerOpen(intent);// 在内部判断是否是由外部打开
     }
 
-    public void initFunc() {// 该部分重复操作无影响
+    public void initFunc() {// 初始化函数,窗口等
         // 初始化窗口
         closeDialog = new CloseDialog();
         editDialog = new EditDialog();
@@ -75,10 +75,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         }
     }
 
-    public void initParam() {// TODO 初始化窗口和功能函数
-    }
-
-    public void initButton() {// 按钮增加监听(重复操作无影响)
+    public void initButton() {// 按钮增加监听
         // 控制`隐藏/显示`按钮
         Button btnCtrl = findViewById(R.id.ctrlButton);
         btnCtrl.setOnClickListener(new View.OnClickListener() {
