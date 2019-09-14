@@ -71,7 +71,7 @@
 
             android:background="@color/grey"
             android:textCursorDrawable="@drawable/text_cursor"
-            android:textColor="@drawable/text_color"
+            android:textColor="@color/black"
 
             android:textSelectHandle="@drawable/text_handle"
             android:textSelectHandleLeft="@drawable/text_handle_left"

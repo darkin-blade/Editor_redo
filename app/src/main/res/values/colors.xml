@@ -6,10 +6,14 @@
     <!-- 自定义颜色 -->
     <color name="black">#000000</color>
     <color name="blue">#00cff0</color>
-    <color name="blue1">#30aff0</color>
-    <color name="blue2">#7f9ff0</color>
-    <color name="blue3">#af88f0</color>
-    <color name="blue_light">#d0f0ff</color>
+    <!-- 30aff0 -->
+    <color name="blue1">#444444</color>
+    <!-- 7f9ff0 -->
+    <color name="blue2">#777777</color>
+    <!-- efa050 af88f0 -->
+    <color name="blue3">#efa050</color>
+    <!-- d0f0ff -->
+    <color name="blue_light">#cccccc</color>
     <color name="blue_dark">#007fc0</color>
 
     <color name="tab_black">#2a2a2a</color>
