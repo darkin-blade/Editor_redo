@@ -19,3 +19,9 @@
 <div align="center">
   <img width="500px" src="https://github.com/hexo-simple-theme/theme_demo/blob/master/editor_delete.jpg">
 </div>
+
+# referrence
+
+## transfer `Uri` to path
+
+[https://github.com/billthefarmer/editor](https://github.com/billthefarmer/editor)
