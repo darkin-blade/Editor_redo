@@ -52,16 +52,9 @@ public class Editor extends AppCompatActivity implements DialogInterface.OnDismi
             text.setEnabled(false);// 不可输入
         }
 
-        // 恢复按钮位置
-        SharedPreferences pNum = getSharedPreferences("num", MODE_PRIVATE);
-        if (pNum.getInt("move", 1) < 0) {
-            Button btnCtrl = findViewById(R.id.ctrlButton);
-            btnCtrl.callOnClick();// 向右移
-        }
-
         // 从外部打开
         Intent intent = getIntent();
-        String action = intent.getAction();// 判断activity启动的方式
+        String action = intent.getAction();// 判断本activity启动的方式
         if (action.equals("android.intent.action.VIEW")) {// 由其他软件打开本软件
             managerHigh.outerOpen(intent);// 在内部判断是否是由外部打开
         }
@@ -105,12 +98,6 @@ public class Editor extends AppCompatActivity implements DialogInterface.OnDismi
                 } else {// `隐藏`按钮
                     temp.setBackgroundResource(R.drawable.button_hide);
                 }
-
-                // 保存按钮位置
-                SharedPreferences pNum = getSharedPreferences("num", MODE_PRIVATE);
-                SharedPreferences.Editor editor = pNum.edit();
-                editor.putInt("move", button_move);// 如果为正说明没有收起
-                editor.commit();
             }
         });
 
@@ -120,6 +107,7 @@ public class Editor extends AppCompatActivity implements DialogInterface.OnDismi
             @Override
             public void onClick(View view) {
                 managerHigh.saveTemp();
+                managerHigh.saveCursor();// 保存光标
                 String tempPath = managerHigh.newTempFile();
                 managerHigh.loadTempFile(tempPath);
             }
@@ -131,6 +119,7 @@ public class Editor extends AppCompatActivity implements DialogInterface.OnDismi
             @Override
             public void onClick(View view) {
                 managerHigh.saveTemp();
+                managerHigh.saveCursor();// 保存光标
                 openManager.show(getSupportFragmentManager(), "open");
             }
         });
@@ -165,6 +154,7 @@ public class Editor extends AppCompatActivity implements DialogInterface.OnDismi
             @Override
             public void onClick(View view) {
                 managerHigh.saveTemp();// 先要将内容更新至临时文件
+                managerHigh.saveCursor();// 保存光标
 
                 // 获取当前页面临时文件路径
                 SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
@@ -310,6 +300,7 @@ public class Editor extends AppCompatActivity implements DialogInterface.OnDismi
         // 保存所有临时数据
         managerHigh.saveNum();// 保存窗口号
         managerHigh.saveTemp();
+        managerHigh.saveCursor();// 保存光标
 
         managerHigh.fuck("pause: " + cur_num + "/" + total_num);// TODO
     }
