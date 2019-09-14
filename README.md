@@ -26,8 +26,10 @@
 
 [https://github.com/billthefarmer/editor](https://github.com/billthefarmer/editor)
 
-# TODO
-
-## Bugs
+# Bugs
 
 - filename display
+
+# TODO
+
+- record the position of buttons
