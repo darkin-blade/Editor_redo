@@ -117,17 +117,17 @@ public class ManagerLow extends GetPath {
     public int saveNum() {// 保存当前窗口号,总窗口数
         SharedPreferences pNum = context.getSharedPreferences("num", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = pNum.edit();
-        editor.putInt("cur", MainActivity.cur_num);
-        editor.putInt("total", MainActivity.total_num);
+        editor.putInt("cur", Editor.cur_num);
+        editor.putInt("total", Editor.total_num);
         editor.commit();
 
-        fuck("save num: " + MainActivity.cur_num + "/" + MainActivity.total_num);
+        fuck("save num: " + Editor.cur_num + "/" + Editor.total_num);
 
         return 0;
     }
 
     public int saveCursor() {// 保存光标位置
-        if (MainActivity.cur_num == -1) {// 乱点按钮的情况
+        if (Editor.cur_num == -1) {// 乱点按钮的情况
             return 1;
         }
 
@@ -138,7 +138,7 @@ public class ManagerLow extends GetPath {
         // 保存位置
         SharedPreferences pCursor = context.getSharedPreferences("cursor", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = pCursor.edit();
-        editor.putInt(MainActivity.cur_num + "", position);// 保存当前窗口的光标位置
+        editor.putInt(Editor.cur_num + "", position);// 保存当前窗口的光标位置
         editor.commit();
 
         return 0;
@@ -147,7 +147,7 @@ public class ManagerLow extends GetPath {
     public int loadCursor() {// 加载当前窗口的光标位置
         // 获取位置
         SharedPreferences pCursor = context.getSharedPreferences("cursor", Context.MODE_PRIVATE);
-        int position = pCursor.getInt(MainActivity.cur_num + "", 0);// 如果没有的话返回0
+        int position = pCursor.getInt(Editor.cur_num + "", 0);// 如果没有的话返回0
 
         // 移动光标
         EditText text = view.findViewById(R.id.text_input);
@@ -184,7 +184,7 @@ public class ManagerLow extends GetPath {
         String tempPath = null;
         SharedPreferences pTab = context.getSharedPreferences("tab", Context.MODE_PRIVATE);
         SharedPreferences pFile = context.getSharedPreferences("file", Context.MODE_PRIVATE);
-        for (int i = 0; i < MainActivity.total_num ; i ++) {
+        for (int i = 0; i < Editor.total_num ; i ++) {
             tempPath = pTab.getString(i + "", null);// TODO 必须非空
             String bindPath = pFile.getString(tempPath, null);
             if (bindPath == null) {// 新文件
@@ -198,13 +198,13 @@ public class ManagerLow extends GetPath {
     }
 
     public int saveTemp() {// 临时保存
-        if (MainActivity.cur_num == -1) {// 没有打开文件
+        if (Editor.cur_num == -1) {// 没有打开文件
             return 1;
         }
 
         try {
             SharedPreferences pTab = context.getSharedPreferences("tab", Context.MODE_PRIVATE);
-            String tempPath = pTab.getString(MainActivity.cur_num + "", null);// TODO 必须非null
+            String tempPath = pTab.getString(Editor.cur_num + "", null);// TODO 必须非null
             File tempFile = new File(tempPath);
             if (tempFile.exists() == false) {// 如果文件不存在则创建
                 tempFile.createNewFile();// TODO 父文件夹不存在

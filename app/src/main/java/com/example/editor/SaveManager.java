@@ -35,7 +35,7 @@ public class SaveManager extends DialogFragment implements FileBroswer {// ä¸»åŠ
     @Override
     public void show(FragmentManager fragmentManager, String tag) {
         super.show(fragmentManager, tag);
-        MainActivity.window_num = 4;
+        Editor.window_num = 4;
     }
 
     @Override

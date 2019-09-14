@@ -25,7 +25,7 @@ public class CloseDialog extends DialogFragment {// 关闭新建文件显示的�
     @Override
     public void show(FragmentManager fragmentManager, String tag) {
         super.show(fragmentManager, tag);
-        MainActivity.window_num = 0;
+        Editor.window_num = 0;
     }
 
     @Override

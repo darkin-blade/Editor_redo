@@ -25,7 +25,7 @@ public class EditDialog extends DialogFragment {// 文件被修改后提示是�
     @Override
     public void show(FragmentManager fragmentManager, String tag) {
         super.show(fragmentManager, tag);
-        MainActivity.window_num = 1;
+        Editor.window_num = 1;
     }
 
     @Override

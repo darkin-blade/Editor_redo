@@ -3,7 +3,6 @@ package com.example.editor;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,20 +29,20 @@ public class ManagerMid extends ManagerLow {
             // 绑定窗口
             SharedPreferences pTab = context.getSharedPreferences("tab", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = pTab.edit();
-            editor.putString(MainActivity.total_num + "", tempPath);// 绑定临时文件到窗口
+            editor.putString(Editor.total_num + "", tempPath);// 绑定临时文件到窗口
             editor.commit();
 
             // 新建tab
             Button btn = new Button(context);
             btn.setTextColor(Color.argb(0xff, 0x90, 0x90, 0x90));
             btn.setBackgroundResource(R.drawable.tab_notactive);// 置为不活跃
-            btn.setId(MainActivity.button_id + MainActivity.total_num);// 添加tab标号
+            btn.setId(Editor.button_id + Editor.total_num);// 添加tab标号
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     saveTemp();// 保存原窗口
                     saveCursor();// 保存光标
-                    changeTab(view.getId() - MainActivity.button_id);
+                    changeTab(view.getId() - Editor.button_id);
                 }
             });
 
@@ -61,13 +60,13 @@ public class ManagerMid extends ManagerLow {
             readFile(tempPath);// TODO 光标位置
 
             // 切换至新标签
-            changeTab(MainActivity.total_num);
-            MainActivity.cur_num = MainActivity.total_num;
-            MainActivity.total_num ++;
+            changeTab(Editor.total_num);
+            Editor.cur_num = Editor.total_num;
+            Editor.total_num ++;
             loadName();// tab显示文件名
 
             // TODO 如果是加载的第一个文件,那么将输入框置为可编辑
-            if (MainActivity.total_num == 1) {
+            if (Editor.total_num == 1) {
                 EditText text = view.findViewById(R.id.text_input);
                 text.setEnabled(true);
             }
@@ -80,12 +79,12 @@ public class ManagerMid extends ManagerLow {
     }
 
     public int closeTab() {// 关闭当前窗口,调整tab与临时文件的绑定
-        if (MainActivity.cur_num == -1) {// TODO 提示
+        if (Editor.cur_num == -1) {// TODO 提示
             return 1;
         }
 
         // 删除当前tab
-        Button btn = view.findViewById(MainActivity.cur_num + MainActivity.button_id);
+        Button btn = view.findViewById(Editor.cur_num + Editor.button_id);
         LinearLayout layout = view.findViewById(R.id.file_tab);// 窗口栏
         layout.removeView(btn);
 
@@ -96,8 +95,8 @@ public class ManagerMid extends ManagerLow {
         SharedPreferences pCursor = context.getSharedPreferences("cursor", Context.MODE_PRIVATE);
         SharedPreferences.Editor eCursor = pCursor.edit();// 修改窗口的光标位置的记录
         int position = 0;
-        if (MainActivity.cur_num + 2 <= MainActivity.total_num) {// 不是最后一个tab,且当前总tab >= 2
-            for (int i = MainActivity.cur_num + 1; i < MainActivity.total_num ; i ++) {
+        if (Editor.cur_num + 2 <= Editor.total_num) {// 不是最后一个tab,且当前总tab >= 2
+            for (int i = Editor.cur_num + 1; i < Editor.total_num ; i ++) {
                 // 修改tab与临时文件的绑定
                 tempPath = pTab.getString(i + "", null);// TODO 必须非空
                 eTab.putString((i - 1) + "", tempPath);
@@ -107,27 +106,27 @@ public class ManagerMid extends ManagerLow {
                 eCursor.putInt((i - 1) + "", position);
 
                 // 修改tab的id
-                btn = view.findViewById(i + MainActivity.button_id);
-                btn.setId(i - 1 + MainActivity.button_id);
+                btn = view.findViewById(i + Editor.button_id);
+                btn.setId(i - 1 + Editor.button_id);
             }
 
             // 最后一个tab清空
-            eTab.putString((MainActivity.total_num - 1) + "", null);
-            eCursor.putInt((MainActivity.total_num - 1) + "", 0);
+            eTab.putString((Editor.total_num - 1) + "", null);
+            eCursor.putInt((Editor.total_num - 1) + "", 0);
         } else {// 是最后一个tab TODO 不管当前打开文件的数目
-            eTab.putString(MainActivity.cur_num + "", null);// 解除tab的绑定
-            eCursor.putInt(MainActivity.cur_num + "", 0);// 光标置为初始处
-            MainActivity.cur_num --;// TODO 会现将该窗口置为不活跃
+            eTab.putString(Editor.cur_num + "", null);// 解除tab的绑定
+            eCursor.putInt(Editor.cur_num + "", 0);// 光标置为初始处
+            Editor.cur_num --;// TODO 会现将该窗口置为不活跃
         }
 
         // 保存更改
         eTab.commit();
         eCursor.commit();
-        MainActivity.total_num --;
-        changeTab(MainActivity.cur_num);// 切换至临近窗口
+        Editor.total_num --;
+        changeTab(Editor.cur_num);// 切换至临近窗口
 
         // 当关闭最后一个窗口后将输入框设置为不可编辑
-        if (MainActivity.total_num == 0) {
+        if (Editor.total_num == 0) {
             EditText text = view.findViewById(R.id.text_input);
             text.setEnabled(false);// 不可输入
         }
@@ -137,13 +136,13 @@ public class ManagerMid extends ManagerLow {
 
     public int changeTab(int next_num) {// 切换标签页,会加载光标
         // 将上一窗口置为不活跃
-        Button tabLast = view.findViewById(MainActivity.button_id + MainActivity.cur_num);
+        Button tabLast = view.findViewById(Editor.button_id + Editor.cur_num);
         if (tabLast != null) {
             tabLast.setBackgroundResource(R.drawable.tab_notactive);
         }
 
         // 将下一窗口置为活跃
-        Button tabNext = view.findViewById(MainActivity.button_id + next_num);
+        Button tabNext = view.findViewById(Editor.button_id + next_num);
         if (tabNext == null) {// 关闭最后一个tab时
             EditText text = view.findViewById(R.id.text_input);
             text.setText("");// 清空
@@ -154,9 +153,9 @@ public class ManagerMid extends ManagerLow {
 
         // 加载下一窗口的内容
         try {
-            MainActivity.cur_num = next_num;
+            Editor.cur_num = next_num;
             SharedPreferences pTab = context.getSharedPreferences("tab", Context.MODE_PRIVATE);
-            String tempPath = pTab.getString(MainActivity.cur_num + "", null);// TODO 必须非空
+            String tempPath = pTab.getString(Editor.cur_num + "", null);// TODO 必须非空
             File tempFile = new File(tempPath);
             if (tempFile.exists() == false) {// TODO 不存在则新建
                 tempFile.createNewFile();
@@ -175,14 +174,14 @@ public class ManagerMid extends ManagerLow {
     public int loadName() {// 显示当前窗口的文件名
         // 获取路径
         SharedPreferences pTab = context.getSharedPreferences("tab", Context.MODE_PRIVATE);
-        String tempPath = pTab.getString(MainActivity.cur_num + "", null);// TODO 必须非空
+        String tempPath = pTab.getString(Editor.cur_num + "", null);// TODO 必须非空
 
         // 获取绑定的对应文件
         SharedPreferences pFile = context.getSharedPreferences("file", Context.MODE_PRIVATE);
         String path = pFile.getString(tempPath, null);
 
         // 加载文件名
-        Button curTab = view.findViewById(MainActivity.cur_num + MainActivity.button_id);
+        Button curTab = view.findViewById(Editor.cur_num + Editor.button_id);
         if (path == null) {// 临时文件
             File tempFile = new File(tempPath);
             curTab.setText(tempFile.getName());

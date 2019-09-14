@@ -27,8 +27,8 @@ public class ManagerHigh extends ManagerMid {
         SharedPreferences pNum = context.getSharedPreferences("num", Context.MODE_PRIVATE);
         int cur_backup = pNum.getInt("cur", -1);
         int total_backup = pNum.getInt("total", 0);
-        MainActivity.cur_num = -1;
-        MainActivity.total_num = 0;
+        Editor.cur_num = -1;
+        Editor.total_num = 0;
 
         // 逐个打开文件
         try {
@@ -74,7 +74,7 @@ public class ManagerHigh extends ManagerMid {
             SharedPreferences pTab = context.getSharedPreferences("tab", Context.MODE_PRIVATE);
             String tempPath = null;
             File tempFile = null;
-            for (int i = 0; i < MainActivity.total_num ; i ++) {
+            for (int i = 0; i < Editor.total_num ; i ++) {
                 tempPath = pTab.getString(i + "", null);// TODO 必须非空
                 tempFile = new File(tempPath);
                 if (tempFile.exists() == false) {// 被删掉了

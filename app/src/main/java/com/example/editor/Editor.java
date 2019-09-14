@@ -15,9 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.File;
-
-public class MainActivity extends AppCompatActivity implements DialogInterface.OnDismissListener {
+public class Editor extends AppCompatActivity implements DialogInterface.OnDismissListener {
     CloseDialog closeDialog;// 0
     EditDialog editDialog;// 1
     NewManager newManager;// 2
@@ -36,10 +34,9 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i("fuck", "oncreate");
-        Log.i("fuck", (findViewById(R.id.text_input) == null) + "");
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.layout_editor);
 
         // 重复操作无影响
         initFunc();
@@ -47,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
         // 恢复窗口
         managerHigh.recoverTab();
-        if (MainActivity.total_num == 0) {// 如果没有打开任何文件,那么不可编辑
+        if (Editor.total_num == 0) {// 如果没有打开任何文件,那么不可编辑
             EditText text = findViewById(R.id.text_input);
             text.setEnabled(false);// 不可输入
         }
@@ -77,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
         // 初始化功能函数
         View view = getWindow().getDecorView().findViewById(android.R.id.content);// TODO
-        managerHigh = new ManagerHigh(MainActivity.this, getExternalFilesDir("").getAbsolutePath(), view);
+        managerHigh = new ManagerHigh(Editor.this, getExternalFilesDir("").getAbsolutePath(), view);
 
         // 检查权限
         String permission = "android.permission.WRITE_EXTERNAL_STORAGE";
@@ -146,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
                 SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
                 String tempPath = pTab.getString(cur_num + "", null);
                 if (tempPath == null) {// 没有打开文件
-                    Toast.makeText(MainActivity.this, "you don't open any file", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Editor.this, "you don't open any file", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -173,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
                 SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
                 String tempPath = pTab.getString(cur_num + "", null);
                 if (tempPath == null) {// 没有打开文件
-                    Toast.makeText(MainActivity.this, "you don't open any file", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Editor.this, "you don't open any file", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -322,9 +319,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     public void onStop() {
         super.onStop();
         managerHigh.fuck("stop");
-        // 不让窗口重叠
-
-//        onDestroy();// TODO
     }
 
     @Override

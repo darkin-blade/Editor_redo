@@ -35,7 +35,7 @@ public class NewManager extends DialogFragment implements FileBroswer {// 在关
     @Override
     public void show(FragmentManager fragmentManager, String tag) {
         super.show(fragmentManager, tag);
-        MainActivity.window_num = 2;
+        Editor.window_num = 2;
     }
 
     @Override

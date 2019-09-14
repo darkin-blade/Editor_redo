@@ -34,7 +34,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// æ‰“å¼
     @Override
     public void show(FragmentManager fragmentManager, String tag) {
         super.show(fragmentManager, tag);
-        MainActivity.window_num = 3;
+        Editor.window_num = 3;
     }
 
     @Override
