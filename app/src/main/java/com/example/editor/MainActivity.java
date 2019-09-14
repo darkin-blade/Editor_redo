@@ -307,12 +307,13 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     @Override
     public void onPause() {
         super.onPause();
-        managerHigh.fuck("pause");
 
         // 保存所有临时数据
         managerHigh.saveNum();// 保存窗口号
         managerHigh.saveTemp();
         managerHigh.saveCursor();// 保存光标
+
+        managerHigh.fuck("pause: " + cur_num + "/" + total_num);// TODO
     }
 
     @Override
@@ -320,7 +321,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         super.onStop();
         managerHigh.fuck("stop");
         // 不让窗口重叠
-         onDestroy();// TODO
+
+        System.exit(0);// TODO
     }
 
     @Override
@@ -331,7 +333,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
     @Override
     public void onDestroy() {
-        managerHigh.fuck("destroy");
+        managerHigh.fuck("destroy: " + cur_num + "/" + total_num);// TODO
+
 
 //        clearData();// TODO 测试用
         super.onDestroy();
