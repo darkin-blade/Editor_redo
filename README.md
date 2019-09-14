@@ -25,3 +25,9 @@
 ## transfer `Uri` to path
 
 [https://github.com/billthefarmer/editor](https://github.com/billthefarmer/editor)
+
+# TODO
+
+## Bugs
+
+- filename display
