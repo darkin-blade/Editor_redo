@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.editor.getpath.GetPath;
 
@@ -98,7 +97,7 @@ public class ManagerHigh extends ManagerMid {
         GetPath getPath = new GetPath(context);
         String path = getPath.readFile(uri);
         if (checkReopen(path)) {// 这个文件已经被打开过
-            Toast.makeText(context, path + " already loaded", Toast.LENGTH_SHORT).show();
+            Editor.info(context, path + " already loaded");
             return -1;
         }
 

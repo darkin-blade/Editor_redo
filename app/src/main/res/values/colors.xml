@@ -11,11 +11,15 @@
     <color name="blue3">#af88f0</color>
     <color name="blue_light">#d0f0ff</color>
     <color name="blue_dark">#007fc0</color>
+
+    <color name="tab_black">#2a2a2a</color>
+    <color name="title_black">#202020</color>
+    <color name="toast_black">#c0000000</color>
+
     <color name="grey">#fafafa</color>
     <color name="grey_light">#eeeeee</color>
     <color name="grey_dark">#666666</color>
-    <color name="title_black">#202020</color>
-    <color name="tab_black">#2a2a2a</color>
+
     <color name="orange">#ffc430</color>
     <color name="red">#fa1030</color>
     <color name="transparent">#00000000</color>

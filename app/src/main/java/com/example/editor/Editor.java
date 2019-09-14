@@ -4,15 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.animation.ObjectAnimator;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Editor extends AppCompatActivity implements DialogInterface.OnDismissListener {
@@ -143,7 +146,7 @@ public class Editor extends AppCompatActivity implements DialogInterface.OnDismi
                 SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
                 String tempPath = pTab.getString(cur_num + "", null);
                 if (tempPath == null) {// 没有打开文件
-                    Toast.makeText(Editor.this, "you don't open any file", Toast.LENGTH_SHORT).show();
+                    info(Editor.this, "you don't open any file");
                     return;
                 }
 
@@ -170,7 +173,7 @@ public class Editor extends AppCompatActivity implements DialogInterface.OnDismi
                 SharedPreferences pTab = getSharedPreferences("tab", MODE_PRIVATE);
                 String tempPath = pTab.getString(cur_num + "", null);
                 if (tempPath == null) {// 没有打开文件
-                    Toast.makeText(Editor.this, "you don't open any file", Toast.LENGTH_SHORT).show();
+                    info(Editor.this, "you don't open any file");
                     return;
                 }
 
@@ -344,6 +347,15 @@ public class Editor extends AppCompatActivity implements DialogInterface.OnDismi
 
 //        clearData();// TODO 测试用
         super.onDestroy();
+    }
+
+    static public void info(Context context, String log) {
+        Toast toast =  Toast.makeText(context, log, Toast.LENGTH_SHORT);
+        View view = toast.getView();
+        view.setBackgroundResource(R.drawable.toast);
+        TextView textView = view.findViewById(android.R.id.message);
+        textView.setTextColor(Color.rgb(0xff, 0xff, 0xff));
+        toast.show();
     }
 
     private void clearData() {

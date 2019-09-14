@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
@@ -86,7 +85,7 @@ public class NewManager extends DialogFragment implements FileBroswer {// 在关
                     result = 1;
                     dismiss();
                 } else {
-                    Toast.makeText(getContext(), path + " already exists", Toast.LENGTH_SHORT).show();
+                    Editor.info(getContext(), path + " already exists");
                 }
             }
         });
@@ -104,7 +103,7 @@ public class NewManager extends DialogFragment implements FileBroswer {// 在关
         // 特判根目录
         if (dirPath == null) {
             result = 0;
-            Toast.makeText(getContext(), "can't access this path", Toast.LENGTH_SHORT).show();
+            Editor.info(getContext(), "can't access this path");
             dismiss();// 强制返回
             return;
         }
