@@ -162,8 +162,6 @@ public class ManagerMid extends ManagerLow {
             }
             readFile(tempPath);
 
-            loadCursor();// TODO 加载光标位置
-
             return 0;
         } catch (IOException e) {
             e.printStackTrace();

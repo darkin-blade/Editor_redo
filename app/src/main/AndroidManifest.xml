@@ -19,7 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <!--  关联任何类型的文件  -->
             <intent-filter android:scheme="http"
                 tools:ignore="AppLinkUrlError">
                 <action android:name="android.intent.action.VIEW"/>

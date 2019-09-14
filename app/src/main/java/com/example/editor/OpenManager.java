@@ -85,7 +85,7 @@ public class OpenManager extends DialogFragment implements FileBroswer {// 打�
         // 特判根目录
         if (dirPath == null) {
             result = 0;
-            Editor.info(getContext(), "can't access this path");
+                Editor.info(getContext(), "can't access this path");
             dismiss();// 强制返回
             return;
         }
