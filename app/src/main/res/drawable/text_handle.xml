@@ -8,7 +8,7 @@
             android:fromDegrees="45">
 
             <shape android:shape="rectangle">
-                <solid android:color="@color/blue1"></solid>
+                <solid android:color="@color/color_2"></solid>
                 <size android:width="20dp"></size>
                 <size android:height="20dp"></size>
                 <corners

@@ -5,13 +5,13 @@
     <color name="colorAccent">#D81B60</color>
     <!-- 自定义颜色 -->
     <color name="black">#000000</color>
-    <color name="blue">#00cff0</color>
+    <color name="color_1">#00cff0</color>
     <!-- 30aff0 -->
-    <color name="blue1">#444444</color>
+    <color name="color_2">#444444</color>
     <!-- 7f9ff0 -->
-    <color name="blue2">#777777</color>
+    <color name="color_3">#777777</color>
     <!-- efa050 af88f0 -->
-    <color name="blue3">#efa050</color>
+    <color name="color_4">#efa050</color>
     <!-- d0f0ff -->
     <color name="blue_light">#cccccc</color>
     <color name="blue_dark">#007fc0</color>

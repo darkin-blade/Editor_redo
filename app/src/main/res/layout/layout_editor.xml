@@ -101,25 +101,25 @@
         <Button
             android:id="@+id/closeButton"
             android:text="close"
-            style="@style/blue3"/>
-
-        <!-- `新建`按钮 -->
-        <Button
-            android:id="@+id/newButton"
-            android:text="new"
-            style="@style/blue2"/>
+            style="@style/button_4"/>
 
         <!-- `保存`按钮 -->
         <Button
             android:id="@+id/saveButton"
             android:text="save"
-            style="@style/blue1"/>
+            style="@style/button_1"/>
+
+        <!-- `新建`按钮 -->
+        <Button
+            android:id="@+id/newButton"
+            android:text="new"
+            style="@style/button_3"/>
 
         <!-- `打开`按钮 -->
         <Button
             android:id="@+id/openButton"
             android:text="open"
-            style="@style/blue"/>
+            style="@style/button_2"/>
     </LinearLayout>
 
 
