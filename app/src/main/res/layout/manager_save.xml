@@ -9,12 +9,8 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/tab_height"
-        android:background="@color/grey"
         android:text="Save as"
-        android:textSize="@dimen/title_size"
-        android:gravity="center">
+        style="@style/white_title">
     </TextView>
 
     <View
@@ -27,11 +23,7 @@
         android:scrollbars="none">
         <TextView
             android:id="@+id/cur_path"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/grey"
-            android:maxLines="1"
-            android:gravity="center">
+            style="@style/white_tab">
         </TextView>
     </HorizontalScrollView>
 

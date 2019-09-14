@@ -23,7 +23,7 @@
         android:scrollbars="none">
         <TextView
             android:id="@+id/cur_path"
-            style="@style/white_title">
+            style="@style/white_tab">
         </TextView>
     </HorizontalScrollView>
 

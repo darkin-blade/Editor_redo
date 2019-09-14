@@ -77,9 +77,14 @@
         <item name="android:background">@color/grey</item>
     </style>
 
+    <style name="white_tab" parent="white_title">
+        <item name="android:textSize">@dimen/tab_size</item>
+    </style>
+
     <style name="black_title" parent="white_title">
-        <item name="android:textColor">@color/white</item>
         <item name="android:background">@color/title_black</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/title_size</item>
     </style>
 
     <style name="grey_title" parent="black_title">
@@ -94,6 +99,7 @@
     <dimen name="tab_height">35dp</dimen>
     <dimen name="tab_width">125dp</dimen>
     <dimen name="tab_between">10dp</dimen>
+    <dimen name="tab_size">16dp</dimen>
 
     <!-- file_manager中每一项的高度 -->
     <dimen name="item_height">65dp</dimen>
