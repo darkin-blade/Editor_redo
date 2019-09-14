@@ -77,6 +77,12 @@ public class NewManager extends DialogFragment implements FileBroswer {// 在关
         yes.setOnClickListener(new View.OnClickListener() {//
             @Override
             public void onClick(View view) {
+                // 文件名不能为空
+                if (fileName.getText().toString().length() == 0) {
+                    Editor.info(getContext(), "file name can't be empty");
+                    return;
+                }
+
                 path = curPath.getText().toString() + "/" + fileName.getText().toString();
 
                 // 判断有无重名
@@ -86,6 +92,7 @@ public class NewManager extends DialogFragment implements FileBroswer {// 在关
                     dismiss();
                 } else {
                     Editor.info(getContext(), path + " already exists");
+                    return;
                 }
             }
         });
