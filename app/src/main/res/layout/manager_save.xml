@@ -76,7 +76,8 @@
                 android:background="@drawable/text_input"
                 android:textColor="@color/black"
                 android:padding="2dp"
-                android:inputType="text"/>
+                android:inputType="text"
+                style="@style/text_input"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

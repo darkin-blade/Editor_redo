@@ -70,13 +70,7 @@
             android:scrollbars="vertical"
 
             android:background="@color/grey"
-            android:textCursorDrawable="@drawable/text_cursor"
-            android:textColor="@color/black"
-
-            android:textSelectHandle="@drawable/text_handle"
-            android:textSelectHandleLeft="@drawable/text_handle_left"
-            android:textSelectHandleRight="@drawable/text_handle_right"
-            android:textColorHighlight="@color/blue_light"
+            style="@style/text_input"
 
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent" />
