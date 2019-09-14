@@ -55,13 +55,6 @@ public class Editor extends AppCompatActivity implements DialogInterface.OnDismi
             Button btnCtrl = findViewById(R.id.ctrlButton);
             btnCtrl.callOnClick();// 向右移
         }
-
-        // 从外部打开
-        Intent intent = getIntent();
-        String action = intent.getAction();// 判断本软件启动的方式
-        if (action.equals("android.intent.action.VIEW")) {// 由其他软件打开本软件
-            managerHigh.outerOpen(intent);// 在内部判断是否是由外部打开
-        }
     }
 
     public void initFunc() {// 初始化函数,窗口等
@@ -325,12 +318,18 @@ public class Editor extends AppCompatActivity implements DialogInterface.OnDismi
     public void onResume() {
         super.onResume();
         managerHigh.fuck("resume");
+
+        // 从外部打开
+        Intent intent = getIntent();
+        String action = intent.getAction();// 判断本软件启动的方式
+        if (action.equals("android.intent.action.VIEW")) {// 由其他软件打开本软件
+            managerHigh.outerOpen(intent);// 在内部判断是否是由外部打开
+        }
     }
 
     @Override
     public void onDestroy() {
         managerHigh.fuck("destroy: " + cur_num + "/" + total_num);// TODO
-
 
 //        clearData();// TODO 测试用
         super.onDestroy();
