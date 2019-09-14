@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i("fuck", "oncreate");
+        Log.i("fuck", (findViewById(R.id.text_input) == null) + "");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -59,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
         // 从外部打开
         Intent intent = getIntent();
-        setIntent(null);
         String action = intent.getAction();// 判断本软件启动的方式
         if (action.equals("android.intent.action.VIEW")) {// 由其他软件打开本软件
             managerHigh.outerOpen(intent);// 在内部判断是否是由外部打开
@@ -323,7 +324,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         managerHigh.fuck("stop");
         // 不让窗口重叠
 
-        onDestroy();// TODO
+//        onDestroy();// TODO
     }
 
     @Override
