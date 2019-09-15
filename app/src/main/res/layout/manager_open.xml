@@ -14,7 +14,7 @@
     </TextView>
 
     <View
-        style="@style/file_manager">
+        style="@style/line">
     </View>
 
     <HorizontalScrollView
@@ -28,7 +28,7 @@
     </HorizontalScrollView>
 
     <View
-        style="@style/file_manager">
+        style="@style/line">
     </View>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -58,7 +58,7 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <View
-                style="@style/file_manager">
+                style="@style/line">
             </View>
 
             <LinearLayout

@@ -14,7 +14,7 @@
     </TextView>
 
     <View
-        style="@style/file_manager">
+        style="@style/line">
     </View>
 
     <HorizontalScrollView
@@ -28,7 +28,7 @@
     </HorizontalScrollView>
 
     <View
-        style="@style/file_manager">
+        style="@style/line">
     </View>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,7 +57,7 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <View
-                style="@style/file_manager">
+                style="@style/line">
             </View>
 
             <EditText
@@ -79,11 +79,13 @@
 
                 <Button
                     android:id="@+id/cancel_button"
-                    style="@style/cancel_button"/>
+                    style="@style/cancel_button"
+                    android:layout_marginRight="2dp"/>
 
                 <Button
                     android:id="@+id/yes_button"
-                    style="@style/confirm_button"/>
+                    style="@style/confirm_button"
+                    android:layout_marginLeft="2dp"/>
 
             </LinearLayout>
 

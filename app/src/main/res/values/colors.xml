@@ -20,9 +20,9 @@
     <color name="title_black">#202020</color>
     <color name="toast_black">#c0000000</color>
 
-    <color name="grey">#fafafa</color>
     <color name="grey_light">#eeeeee</color>
     <color name="grey_dark">#666666</color>
+    <color name="grey">#fafafa</color>
 
     <color name="orange">#ffc430</color>
     <color name="red">#fa1030</color>
